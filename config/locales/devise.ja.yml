@@ -1,0 +1,4 @@
+ja:
+  devise:
+    omniauth_callbacks:
+      failure: "%{kind} 認証に失敗しました (%{reason})"

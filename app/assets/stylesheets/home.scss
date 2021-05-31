@@ -1,0 +1,45 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.font1{
+   font-size: 22px;
+   font-weight: bold;
+   border-bottom: thick double #668ad8;
+}
+
+.font2{
+    font-size: 27px;
+    font-weight: bold;
+    border-bottom: thick double #668ad8;
+}
+
+.font3{
+    font-size: 25px;
+}
+
+.container{
+    overflow: hidden;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .swiper-wrapper{
+    
+    max-width: 1200px; 
+   
+  }
+
+  .sample ul{
+    display: flex;
+    overflow-x: scroll;
+    margin: 0;	
+    padding: 0;
+  }
+  .sample li{
+    min-width: 40%;
+    margin: 10px;	
+    padding: 0;
+    list-style: none;
+  }
+  

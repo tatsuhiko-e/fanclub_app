@@ -1,0 +1,23 @@
+<header class="">
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#668ad8;">
+    <div class="navbar-brand" href="/">navbar</div>
+    <!-- 横幅が狭い時に出るハンバーガーボタン -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- メニュー項目 -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if current_user %>
+          
+          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></li>
+          <li class="nav-item"><%= link_to current_user.name, "users/#{current_user.id}", class: "btn btn-outline-light" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to '新規登録', new_user_session_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
+      <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
