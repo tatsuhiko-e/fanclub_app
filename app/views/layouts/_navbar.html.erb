@@ -9,8 +9,7 @@
     <!-- メニュー項目 -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <% if current_user %>
-          
+        <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></li>
           <li class="nav-item"><%= link_to current_user.name, "users/#{current_user.id}", class: "btn btn-outline-light" %></li>
         <% else %>

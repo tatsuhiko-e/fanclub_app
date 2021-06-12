@@ -14,9 +14,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  resources :users, only: [:show]
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/about', to: 'home#about'
+  get '/makefanclub', to: 'home#makefanclub'
 
 end
