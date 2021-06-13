@@ -2,3 +2,8 @@ ja:
   devise:
     omniauth_callbacks:
       failure: "%{kind} 認証に失敗しました (%{reason})"
+    registrations:
+      user:
+        signed_up_but_not_approved: 'あなたが正常にサインアップしているが、あなたのアカウントが管理者によって承認されていない、まだ'
+    failure:
+      not_approved: 'あなたのアカウントはまだ管理者によって承認されていません'

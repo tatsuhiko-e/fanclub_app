@@ -4,8 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :omniauthable
 
-
   has_one_attached :image
+
+  # def active_for_authentication? 
+  #   super && approved? 
+  # end 
+  
+  # def inactive_message 
+  #   approved? ? super : :not_approved
+  # end
+
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
     
@@ -25,6 +34,7 @@ class User < ApplicationRecord
     user
   end
 
+
   enum area:{
     "---":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -39,6 +49,7 @@ class User < ApplicationRecord
   }
 
   enum gender: { 男: 0, 女: 1}
+
 
   private
   def self.dummy_email(auth)
