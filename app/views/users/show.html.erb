@@ -1,37 +1,77 @@
-<div class="text-right"><%= link_to "編集する", edit_user_path %></div>
-<div class="text-center">
-  <ul class="list-inline" style="width: 1200px;">
-    <li class="list-inline-item">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Oswald:wght@700&family=Reggae+One&display=swap" rel="stylesheet">
 
-      <div class="mt-5"><%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"440x440^", crop:"440x440+0+0"}).processed %></div>
-      
-      <div class="name-font"><%= @user.name %><div>
-    </li>
-    <li class="list-inline-item">
-      <div class="name-font"><%= "プロフィール#{@user.profile}" %><div>
-      <div class="name-font"><%= "年齢#{@user.age}" %><div>
-      <div class="name-font"><%= "性別#{@user.gender}" %><div>
-      <div class="name-font"><%= "地域#{@user.area}" %><div>
-    </li>
-  </ul>
+ <% if current_user.admin? && !(current_user == @user) %> 
+  <div class="text-right"><%= link_to "編集する", edit_user_path %></div>
+  <div class="text-center">
+    <ul class="list-inline" style="width: 1200px;">
+      <li class="list-inline-item">
 
-</div>
-
-<div class="container bg-white">
-    <ul class="nav nav-tabs mb-3 nav-justified" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ファンクラブ</a>
+        <div class="mt-5"><%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"440x440^", crop:"440x440+0+0"}).processed %></div>
+        
+        <div class="name-font"><%= @user.name %><div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">お気に入り投稿</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">参加イベント</a>
+      <li class="list-inline-item">
+        <div class="name-font"><%= "プロフィール#{@user.profile}" %><div>
+        <div class="name-font"><%= "年齢#{@user.age}" %><div>
+        <div class="name-font"><%= "性別#{@user.gender}" %><div>
+        <div class="name-font"><%= "地域#{@user.area}" %><div>
       </li>
     </ul>
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+
+  </div>
+
+  <div class="container bg-white">
+      <ul class="nav nav-tabs mb-3 nav-justified" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ファンクラブ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">お気に入り投稿</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">参加イベント</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+      </div>
+  </div>
+
+<% else %>
+
+
+
+  <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+  <ul class="table-ul pl-0">
+    <li class="current">
+      <%= link_to "プロフィール", @user, class: "" %>
+    </li>
+    <li>
+      <a class="" data-toggle="tab" href="#home">Photos</a>
+    </li>
+    <li>
+      <%= link_to "Schedule", "/", class: "" %>
+    </li>
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+  </ul>
+
+  <div class="h1 text-center team-name">
+    <%= @user.name %>
+  </div>
+
+  <div class="container">
+    <div class="prfile text-center">
+      <a><%= "ABOUT #{@user.name}" %></a>
+      <h2><%= @user.profile %></h2>
     </div>
-</div>
+  </div>
+
+<% end %>
