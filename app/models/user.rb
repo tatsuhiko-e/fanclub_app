@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :omniauthable
 
   has_one_attached :image
+  has_many :members, dependent: :destroy
 
   # def active_for_authentication? 
   #   super && approved? 

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'toppages/index'
   root to: 'home#about'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -14,7 +13,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  resources :users
+  resources :users do
+    resources :members
+  end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/about', to: 'home#about'

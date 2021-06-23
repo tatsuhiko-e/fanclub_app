@@ -1,0 +1,5 @@
+<div class="prfile text-center">
+    <a><%= @member.member %></a>
+    <h2><%= @member.profile %></h2>
+    <%= image_tag @member.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+</div>

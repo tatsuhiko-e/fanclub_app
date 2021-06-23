@@ -1,7 +1,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&family=Oswald:wght@700&family=Reggae+One&display=swap" rel="stylesheet">
 
- <% if current_user.admin? && !(current_user == @user) %> 
+ <% if current_user.admin? %> 
+  <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+  <ul class="table-ul pl-0">
+    <li class="current">
+      <%= link_to "プロフィール", @user, class: "" %>
+    </li>
+    <li>
+      <a class="" data-toggle="tab" href="#home">Photos</a>
+    </li>
+    <li>
+      <%= link_to "Schedule", "/", class: "" %>
+    </li>
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+  </ul>
+
+  <div class="h1 text-center team-name">
+    <%= @user.name %>
+  </div>
+
+  <div class="container">
+    <div class="prfile text-center">
+      <a><%= "ABOUT #{@user.name}" %></a>
+      <h2><%= @user.profile %></h2>
+    </div>
+  </div>
+
+  <% if current_page?(current_user) %>
+    <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
+  <% end %>
+  
+<!- メンバー一覧 ->
+  
+  <% @user.members.each do |member| %>
+    <div class="card border-dark mb-3 mx-2 " style="">
+     <%= link_to user_member_path(@user, member), class: " text-dark" do %>
+       <div class="card-header"><%= member.member %></div>
+       <div class="card-body">
+       <h4 class="card-title text-center"><%= image_tag(member.image.variant(gravity: :center, crop:"640x640+0+0").processed, class: "img-fluid") %></h4>
+       </div>
+     <% end %>
+  </div>
+  <% end %>
+
+
+<% else %>
   <div class="text-right"><%= link_to "編集する", edit_user_path %></div>
   <div class="text-center">
     <ul class="list-inline" style="width: 1200px;">
@@ -38,40 +87,6 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
       </div>
-  </div>
-
-<% else %>
-
-
-
-  <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
-  <ul class="table-ul pl-0">
-    <li class="current">
-      <%= link_to "プロフィール", @user, class: "" %>
-    </li>
-    <li>
-      <a class="" data-toggle="tab" href="#home">Photos</a>
-    </li>
-    <li>
-      <%= link_to "Schedule", "/", class: "" %>
-    </li>
-    <li>
-      <%= link_to "Contact", "/", class: "" %>
-    </li> 
-    <li>
-      <%= link_to "Contact", "/", class: "" %>
-    </li> 
-  </ul>
-
-  <div class="h1 text-center team-name">
-    <%= @user.name %>
-  </div>
-
-  <div class="container">
-    <div class="prfile text-center">
-      <a><%= "ABOUT #{@user.name}" %></a>
-      <h2><%= @user.profile %></h2>
-    </div>
   </div>
 
 <% end %>
