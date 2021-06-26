@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
     has_one_attached :image
     belongs_to :user
-    validates :member, presence: true, length: { maximum: 25 }
+    validates :name, presence: true, length: { maximum: 25 }
     validates :profile, length: { maximum: 3000 }
     validate :limit_image
 
