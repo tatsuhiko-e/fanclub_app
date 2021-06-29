@@ -1,0 +1,9 @@
+
+<div class='text-center'><%= @post.title %></div>
+<div class='text-center'><%= image_tag(@post.image.variant(gravity: :center, resize:"640x640^").processed, class: "img-fluid") %></div>
+<div class='text-center'><%= @post.body %></div>
+
+  <% if current_user.admin? %> 
+    <%= link_to 'このメッセージを削除する', user_post_path(@user, @post), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+    <%= link_to 'このメッセージを編集する', edit_user_post_path(@user, @post) %>
+  <% end %>
