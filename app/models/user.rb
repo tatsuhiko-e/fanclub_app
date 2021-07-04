@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :members, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   # def active_for_authentication? 
   #   super && approved? 

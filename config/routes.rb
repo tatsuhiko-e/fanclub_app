@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :members
     resources :posts
+    resources :events
   end
 
   

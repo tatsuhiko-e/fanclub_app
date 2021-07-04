@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_user, only: [:show, :new, :destroy, :edit, :update]
   before_action :set_post, only: [:show, :destroy, :edit, :update]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
@@ -10,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:user_id])
+    
   end
 
   def new
-    @user = User.find_by(id: params[:user_id])
+
     @post = Post.new
   end
 
@@ -30,11 +31,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:user_id])
   end
 
   def update
-    @user = User.find_by(id: params[:user_id])
     if @post.update(post_params)
       redirect_to action: :index
     else
@@ -47,14 +46,19 @@ class PostsController < ApplicationController
     redirect_to action: :index
   end
 
+
   private
+
+  def set_user
+    @user = User.find_by(id: params[:user_id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :image, :start_time)
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = @user.posts.find(params[:id])
   end
 
   def ensure_correct_user

@@ -7,7 +7,7 @@
       <%= link_to "ブログ", user_posts_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "Schedule", "/", class: "" %>
+      <%= link_to "スケジュール", user_events_path(@user), class: "" %>
     </li>
     <li>
       <%= link_to "Contact", "/", class: "" %>
@@ -17,19 +17,8 @@
     </li> 
   </ul>
 
-  <div class="h1 text-center team-name">
-    <%= @user.name %>
-  </div>
-
-  <div class="container">
-    <div class="prfile text-center">
-      <a><%= "ABOUT #{@user.name}" %></a>
-      <h2><%= @user.profile %></h2>
-    </div>
-  </div>
-
-  <% if current_page?(current_user) %>
-    <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
+  <% if @user.id == current_user.id %>
+    <div class="text-right"><%= link_to "メンバーを追加する", new_user_post_path(@user) %></div>
   <% end %>
   
 <!- メンバー一覧 ->

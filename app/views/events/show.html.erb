@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>時間</strong>
+  <%= @event.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @event.body %>
+</p>

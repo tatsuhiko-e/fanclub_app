@@ -1,13 +1,14 @@
 class MembersController < ApplicationController
+  before_action :set_user, only: [:show, :new, :edit]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
-    @user = User.find_by(id: params[:user_id])
+
   end
 
   def new
-    @user = User.find_by(id: params[:user_id])
+
     @member = Member.new
   end
 
@@ -23,7 +24,7 @@ class MembersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:user_id])
+
   end
 
   def update
