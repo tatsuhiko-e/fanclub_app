@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   
     def index
       @user = User.find_by(id: params[:user_id])
-      @events = @user.events.all
+      @events = @user.posts.where(event: true)
     end
   
     def show

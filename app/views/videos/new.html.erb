@@ -1,0 +1,13 @@
+<% if @user.id == current_user.id %>
+  <%= form_with(model:[@user, @video], method: :post) do |f| %>
+    <div class="form-group">
+      <%= f.label :title, 'タイトル' %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+    <%= f.label :youtube_url, '本文' %>
+      <%= f.text_field :youtube_url %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+<% end %>

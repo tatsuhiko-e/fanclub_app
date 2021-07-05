@@ -14,7 +14,7 @@
       <%= link_to "スケジュール", user_events_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "Contact", "/", class: "" %>
+      <%= link_to "動画", user_videos_path(@user), class: "" %>
     </li> 
     <li>
       <%= link_to "Contact", "/", class: "" %>
@@ -37,17 +37,19 @@
   <% end %>
   
 <!- メンバー一覧 ->
-  
-  <% @user.members.each do |member| %>
-    <div class="card border-dark mb-3 mx-2 " style="">
-     <%= link_to user_member_path(@user, member), class: " text-dark" do %>
-       <div class="card-header"><%= member.name %></div>
-       <div class="card-body">
-       <h4 class="card-title text-center"><%= image_tag(member.image.variant(gravity: :center, crop:"640x640+0+0").processed, class: "img-fluid") %></h4>
-       </div>
-     <% end %>
+  <div class="member">
+    <% @user.members.each do |member| %>
+    
+      <section class="card1">
+      <%= link_to user_member_path(@user, member), class: "" do %>
+        <div class="card-title1 text-center"><%= image_tag(member.image.variant(gravity: :center, crop:"640x640+0+0").processed, class: "img-fluid card-img1") %></div>
+        <div class="card-content1">
+          <h1 class="card-title1"><%= member.name %></h1>
+        </div>
+      </section>
+    <% end %>
+    <% end %>
   </div>
-  <% end %>
 
 
 <% else %>

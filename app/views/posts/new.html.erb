@@ -1,5 +1,15 @@
 <% if @user.id == current_user.id %>
   <%= form_with(model:[@user, @post], method: :post) do |f| %>
+    <div class="form-check">
+      <%= f.label :event, 'イベント投稿' %>
+      <%= f.check_box :event, class: 'form-chedk-input' %>
+    </div>
+
+    <div class="time">
+      <%= f.label :start_time %>
+      <%= f.datetime_select :start_time %>
+    </div>
+
     <div class="form-group">
       <%= f.label :title, 'タイトル' %>
       <%= f.text_field :title %>
@@ -14,3 +24,4 @@
     <%= f.submit %>
   <% end %>
 <% end %>
+

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit]
+  before_action :ensure_correct_user, only: [:update, :destroy]
+  
 
   def index
     if params[:approved] == "false"
@@ -11,12 +12,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
     unless @user == current_user
-    redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id)
     end
   end
 

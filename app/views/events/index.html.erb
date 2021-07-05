@@ -10,7 +10,7 @@
       <%= link_to "スケジュール", user_events_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "Contact", "/", class: "" %>
+      <%= link_to "動画", user_videos_path(@user), class: "" %>
     </li> 
     <li>
       <%= link_to "Contact", "/", class: "" %>
@@ -32,13 +32,3 @@
   <% end %>
 <% end %>
 
-<table>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

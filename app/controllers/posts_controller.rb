@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_user, only: [:show, :new, :destroy, :edit, :update]
+  before_action :set_user, only: [:index, :show, :new, :destroy, :edit, :update]
   before_action :set_post, only: [:show, :destroy, :edit, :update]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
@@ -15,7 +15,6 @@ class PostsController < ApplicationController
   end
 
   def new
-
     @post = Post.new
   end
 
@@ -54,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :start_time)
+    params.require(:post).permit(:title, :body, :event, :image, :start_time)
   end
 
   def set_post
