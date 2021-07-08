@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @user = User.find_by(id: params[:user_id])
+    @posts = @user.posts.all
     unless @user.admin?
       redirect_to @user
     end

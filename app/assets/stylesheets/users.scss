@@ -3,8 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .name-font{
-    font-size: 30px;
+    font-size: 50px;
+    font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
 }
+
+
 
 .table-ul {
     background-color: #668ad8;
@@ -58,6 +61,9 @@
 }
 
 
+
+
+// メンバー一覧
 
 .member {
 	display: flex;

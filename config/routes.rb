@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :members
-    resources :posts
+    resources :posts do
+      resources :likes, only: [:create]
+      resource :like, only: [:destroy]
+    end
     resources :events
     resources :videos
   end

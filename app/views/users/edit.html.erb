@@ -1,58 +1,46 @@
 <% if !@user.admin? %> 
-  <div class="row">
-    <div class="span6 offset3">
+
     <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
+      <%= f.label :プロフィール %>
+      <%= f.text_field :profile %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+      <%= f.label :年齢 %>
+      <%= f.select :age, options_for_select((1..100).to_a), { include_blank: '選択'} %>
 
-    <%= f.label :プロフィール %>
-    <%= f.text_field :profile %>
+      <%= f.label :性別 %>
+      <%= f.select :gender, User.genders.keys, {} %>
 
-    <%= f.label :年齢 %>
-    <%= f.select :age, options_for_select((1..100).to_a), { include_blank: '選択'} %>
+      <%= f.label :地域 %>
+      <%= f.select :area, User.areas.keys, {} %>
 
-    <%= f.label :性別 %>
-    <%= f.select :gender, User.genders.keys, {} %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
 
-    <%= f.label :地域 %>
-    <%= f.select :area, User.areas.keys, {} %>
-
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-
-    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
-
-    </div>
-  </div>
 <% else %>
-
-  <div class="">
-    <div class="">
     <%= form_for(@user) do |f| %>
 
 
-    <%= f.label :チーム名 %>
-    <%= f.text_field :name %>
+      <%= f.label :チーム名 %>
+      <%= f.text_field :name %>
 
-    <%= f.label :プロフィール %>
-    <%= f.text_field :profile %>
+      <%= f.label :プロフィール %>
+      <%= f.text_field :profile %>
 
-    <%= f.label :性別 %>
-    <%= f.select :gender, User.genders.keys, {} %>
+      <%= f.label :性別 %>
+      <%= f.select :gender, User.genders.keys, {} %>
 
-    <%= f.label :活動地域 %>
-    <%= f.select :area, User.areas.keys, {} %>
+      <%= f.label :活動地域 %>
+      <%= f.select :area, User.areas.keys, {} %>
 
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
 
-    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
-
-    </div>
-  </div>
 
 <% end %>

@@ -1,0 +1,5 @@
+<% if current_user.already_liked?(post) %>
+  <%= button_to 'いいね♡', user_post_like_path(@user, post), class: 'btn btn-warning', method: :delete, remote: true %>
+<% else %>
+  <%= button_to 'いいね♡', user_post_likes_path(@user, post), class: 'btn btn-outline-dark', remote: true %>
+<% end %>

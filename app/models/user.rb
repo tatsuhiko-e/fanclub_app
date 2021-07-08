@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :videos, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
 
   # def active_for_authentication? 
   #   super && approved? 
@@ -17,6 +19,10 @@ class User < ApplicationRecord
   # def inactive_message 
   #   approved? ? super : :not_approved
   # end
+
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
 
 
   def self.find_for_oauth(auth)

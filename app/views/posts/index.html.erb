@@ -24,7 +24,7 @@
 <!- メンバー一覧 ->
   
 <div class="container" style="">
-  <% @user.posts.reverse_each do |post| %>
+  <% @posts.reverse_each do |post| %>
     <% if post.event? %>
       <section class="card">
         <%= link_to user_post_path(@user, post), class: " text-dark" do %>
@@ -45,10 +45,12 @@
           <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
         </div>
         <% end %>
+        <div id="likes_buttons_<%= post.id %>">
+          <%= render partial: "likes/like", locals: {user: @user, post: post} %>
+        </div>
       </section>
+      
     <% end %>
-
-   
   <% end %>
 </div>
 

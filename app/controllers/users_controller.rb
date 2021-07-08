@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def likelist
+    @posts = current_user.like_posts
+  end
+
 
   private
   def user_params

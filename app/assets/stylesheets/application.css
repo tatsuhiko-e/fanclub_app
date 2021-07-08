@@ -15,13 +15,16 @@
  *= require_self
  */
 
+ html, body {
+  font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+}
+
 body {
     
     min-width: 1200px;
 }
 
  .container{
-    background-color: rgb(249, 253, 255);
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
