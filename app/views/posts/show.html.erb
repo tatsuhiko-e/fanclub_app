@@ -8,3 +8,19 @@
     <%= link_to 'このメッセージを編集する', edit_user_post_path(@user, @post) %>
   <% end %>
   
+  <div class='block text-center mt-5'>
+    <%= form_with(model:[@user, @post, @comment], method: :post) do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+    <% @post.comments.each do |comment| %>
+      <p><%= comment.user.name %> :
+      <%= comment.content %>
+      <% if comment.user.id == current_user.id %>
+      <%= link_to 'コメントを削除する', user_comment_path(comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+      <% end %>
+      </p>
+      
+      <hr>
+     <% end %>
+  </div>

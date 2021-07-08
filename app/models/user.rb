@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :videos, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
+  has_many :events, dependent: :destroy
 
   # def active_for_authentication? 
   #   super && approved? 
