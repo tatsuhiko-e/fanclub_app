@@ -3,12 +3,11 @@ class CommentsController < ApplicationController
   before_action :ensure_correct_user, only: [:destroy]
 
   def create
-    
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = params[:post_id]
     if @comment.save
-      redirect_to post_url(params[:post_id])
+      redirect_to user_post_path()
     else
       @post = Post.find(params[:post_id])
       render "posts/show"
@@ -18,8 +17,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    @post = Post.find(params[:post_id])
-    redirect_to @post
+    redirect_back(fallback_location: root_path)
   end
   
   private
