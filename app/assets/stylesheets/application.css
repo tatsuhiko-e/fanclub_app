@@ -20,9 +20,74 @@
 }
 
 body {
-    
     min-width: 1200px;
 }
+
+.container{
+  background-color: #fdfdff;
+  overflow: hidden;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* navbar */
+
+.navbar-nav{
+  margin-top: 30px;
+}
+
+.navbar{
+  height: 70px;
+}
+
+  /*検索フォーム*/
+  #form2{
+
+  margin-bottom:20px;
+  }
+
+  #sbox2{
+    
+  height:39px;
+  width: 300px;
+  padding:0 10px; 
+
+  border-radius:2px;
+  outline:0;
+  background:rgb(255, 255, 255);	
+  }
+  
+  #sbtn2{
+  height:50px;
+  position:relative; 
+  left:-45px;/*アイコン左右の位置調整*/
+  top:-5px;
+  background:none;
+  color: #741c9c;
+  border:none;
+  font-size:20px;/*アイコンサイズ*/
+  }
+  #sbtn5:hover{
+  color:#e57fff;
+  }
+
+#sbtn3{
+  height:50px;
+  position:relative; 
+  left:0px;/*アイコン左右の位置調整*/
+  top:0px;
+  background:none;
+  color: #741c9c;
+  border:none;
+  font-size:20px;/*アイコンサイズ*/
+}
+
+  
+/*ここまでnavbar*/
+  
+
+  
 
  .container{
     width: 100%;

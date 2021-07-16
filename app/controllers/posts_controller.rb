@@ -45,6 +45,11 @@ class PostsController < ApplicationController
     redirect_to action: :index
   end
 
+  def event
+    @user = User.find_by(id: params[:user_id])
+    @events = @user.posts.where(event: true)
+  end
+
 
   private
 

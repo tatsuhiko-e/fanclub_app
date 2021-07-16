@@ -3,11 +3,12 @@ class CommentsController < ApplicationController
   before_action :ensure_correct_user, only: [:destroy]
 
   def create
+    @user = User.find_by(id: params[:user_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = params[:post_id]
     if @comment.save
-      redirect_to user_post_path()
+      redirect_to controller: :posts, action: :show, id: @comment.post.id
     else
       @post = Post.find(params[:post_id])
       render "posts/show"

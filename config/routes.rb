@@ -19,8 +19,11 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
       resource :like, only: [:destroy]
       resources :comments, only: [:create, :destroy]
+      collection do
+        get 'event'
+      end
     end
-    resources :events
+   
     resources :videos
   end
 

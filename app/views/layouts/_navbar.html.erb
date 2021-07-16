@@ -1,6 +1,6 @@
-<header class="">
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#668ad8;">
-    <div class="navbar-brand" href="/">navbar</div>
+
+  <nav class="navbar navbar-expand-sm navbar-ligth border-bottom border-3 border-primary" style="background-color:#fdfdff; ">
+    <div class="navbar-brand"><%= link_to "Navbar", root_path %></div>
     <!-- 横幅が狭い時に出るハンバーガーボタン -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -10,13 +10,32 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></li>
-          <li class="nav-item"><%= link_to current_user.name, user_path(current_user.id), class: "btn btn-outline-light" %></li>
+        <li class="nav-item"><%= link_to '探す', root_path, class: 'btn btn-outline-primary mr-1' %></li>
+        <li>
+          <form id="form2" class="d-flex mx-0">
+            <input id="sbox2" class="form-control me-sm-2" type="text" placeholder="Search">
+            <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
+          </form>
+        </li>
+          <li  class="nav-item">
+          <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></li>
+          <li id="sbtn3" class="nav-item">
+            <%= link_to user_path(current_user.id) do %>
+              <i class="fas fa-user-circle fa-2x"></i>
+            <% end %>
+          </li>
         <% else %>
-          <li class="nav-item"><%= link_to '新規登録', new_user_session_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
-      <% end %>
+        <li>
+          <form id="form2" class="d-flex">
+            <input id="sbox2" class="form-control me-sm-2" type="text" placeholder="Search">
+            <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
+          </form>
+        </li>
+          <li class="nav-item"><%= link_to '新規登録', new_user_session_path, class: 'btn btn-primary mr-3' %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-primary ' %></li>
+        <% end %>
+  
+      
       </ul>
     </div>
   </nav>
-</header>

@@ -7,7 +7,7 @@
       <%= link_to "ブログ", user_posts_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "スケジュール", user_events_path(@user), class: "" %>
+      <%= link_to "スケジュール", event_user_posts_path(@user), class: "" %>
     </li>
     <li>
       <%= link_to "動画", user_videos_path(@user), class: "" %>
@@ -45,9 +45,7 @@
           <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
         </div>
         <% end %>
-        <div id="likes_buttons_<%= post.id %>">
-          <%= render partial: "likes/like", locals: {user: @user, post: post} %>
-        </div>
+      
       </section>
       
     <% end %>

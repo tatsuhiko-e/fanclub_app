@@ -9,7 +9,7 @@
       <%= link_to "ブログ", user_posts_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "スケジュール", user_events_path(@user), class: "" %>
+      <%= link_to "スケジュール", event_user_posts_path(@user), class: "" %>
     </li>
     <li>
       <%= link_to "動画", user_videos_path(@user), class: "" %>
@@ -28,7 +28,7 @@
     </div>
  
 
-  <% if current_page?(current_user) %>
+  <% if @user.id == current_user.id %>
     <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
   <% end %>
   
