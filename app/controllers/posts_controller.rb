@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @posts = @user.posts.all
+    @search = @user.posts.ransack(params[:q])
+    @results = @search.result.page(params[:page])
     unless @user.admin?
       redirect_to @user
     end

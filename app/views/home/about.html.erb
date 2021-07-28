@@ -43,44 +43,66 @@
 </div>
 
 <div class="text-center">
-  <h2 class="font3">あなただけのファンクラブを</h2>
+  <h2 class="font3">何かキャッツフレーズを入れたいな</h2>
 </div>
 
 
-<div class="text-center">
-  <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-flat-vertical-border mt-3" %>
-
-  <a href="#" class="btn-flat-vertical-border mt-3">ファンクラブを作る</a>
-</div>
-
-
-<h2 class="font4">新規ファンクラブ</h2>
-
-<div class="sample">
-<ul>
-  <li >
-    <a href="#"><img src="/assets/02.jpg" alt style="width: 100%;"></a>
+<ul class="button1">
+  <li>
+    <div class="text-center">
+       <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-flat-vertical-border mt-3" %>
+    </div> 
   </li>
   <li>
-    <img src="/assets/02.jpg" alt style="width: 100%;">
-  </li>
-  <li>
-    <img src="/assets/02.jpg" alt style="width: 100%;">
-  </li>
-  <li>
-    <img src="/assets/02.jpg" alt style="width: 100%;">
-  </li>
-  <li>
-    <img src="/assets/02.jpg" alt style="width: 100%;">
-  </li>
-  <li>
-    <img src="/assets/02.jpg" alt style="width: 100%;">
+    <div class="text-center">
+     
+    </div> 
+    <div class="text-center">
+       <%= link_to 'ファンクラブを探す', users_path, class: "btn-flat-vertical-border mt-3" %>
+    </div> 
   </li>
 </ul>
+    
+
+
+
+
+<%
+=begin%>
+ 
+<%
+=end%>
+
+
+<h2 class="font4 ">新規ファンクラブ</h2>
+  <div class="member">
+    <% @users.last(6).each do |user| %>
+      <section class="card2">
+      <%= link_to user_path(user), class: "" do %>
+        <div class="card-title1 text-center"><%= image_tag(user.image.variant(gravity: :center, resize:'1024x350').processed, class: "img-fluid card-img2") %></div>
+        <div class="card-content1">
+          <h1 class="card-title1"><%= user.name %></h1>
+        </div>
+      </section>
+    <% end %>
+    <% end %>
+  </div>
 </div>
 
-
-
+<% if user_signed_in? %>
+<h2 class="font4 ">近くのアーティスト</h2>
+  <div class="member">
+    <% @area_user.last(6).each do |user| %>
+      <section class="card2">
+      <%= link_to user_path(user), class: "" do %>
+        <div class="card-title1 text-center"><%= image_tag(user.image.variant(gravity: :center, resize:'1024x350').processed, class: "img-fluid card-img2") %></div>
+        <div class="card-content1">
+          <h1 class="card-title1"><%= user.name %></h1>
+        </div>
+      </section>
+    <% end %>
+    <% end %>
+  </div>
 </div>
-
+<% end %>
 

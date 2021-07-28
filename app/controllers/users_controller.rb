@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
-  before_action :ensure_correct_user, only: [:update, :destroy]
+  before_action :ensure_correct_user, only: [:destroy]
   
 
   def index
-    if params[:approved] == "false"
-      @users = User.where(approved: false)
-    else
-      @users = User.all
-    end
+    @user_search = User.ransack(params[:q])
+    @user_results = @user_search.result.page(params[:page])
   end
 
   def show
@@ -23,9 +20,13 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       redirect_to user_path(current_user.id)
-    else
+    else 
+      
       render :edit
     end
+    
+   
+    
   end
 
   def likelist

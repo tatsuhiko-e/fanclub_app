@@ -10,20 +10,22 @@
 
 
 .table-ul {
-    background-color: #668ad8;
+    background-color: #c0c0c0;
     display: table;
     table-layout: fixed;
     text-align: center;
     width: 100%;
     margin: {
       top: 1px;
-      bottom: 1px;
+      bottom: 0px;
     }
   }
   .table-ul li {
     border-right: 1px solid #fff;
     display: table-cell;
     vertical-align: middle;
+    outline: 1px solid rgb(88, 20, 119);
+    outline-offset: -10px;
   }
 
   .table-ul li:last-child {
@@ -31,39 +33,53 @@
   }
 
   .table-ul li a {
-    color: #fff;
+    color: rgb(35, 31, 39);
     display: block;
-    font-size: 18px;
+    font-size: 25px;
     text-decoration: none;
     padding: 30px 0px;
   }
 
   .table-ul li a:hover {
-    background-color: #3b60b1;
+    background-color: #5c5c5c;
+    color: #ccc;
   }
 
   .table-ul li.current a {
-    background-color: #0f2b69;
+    color: #ccc;
+    background-color: #1f1f1f;
   }
 
+// profile
+  
 
-.team-name{
-    font-size: 100px;
-    font-family: 'Noto Serif JP', serif;
-    font-family: 'Oswald', sans-serif;
-    font-family: 'Reggae One', cursive;
-    
-}
- 
-.prfile{
-    
-    background-color: #668ad8;
-}
+  .user-name{
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 1120px;
+    border-bottom: solid;
+    border-color: #741c9c;;
+  }
 
+  .profile{
+    font-size: 30px;
+  }
 
 
 
 // メンバー一覧
+
+.font7{
+  font-size: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 1120px;
+  border-bottom: solid;
+  border-color: #741c9c;;
+}
 
 .member {
 	display: flex;
@@ -76,7 +92,7 @@
   display: inline-block;
   margin: 25px auto;
   width: 250px;
-  background: #fff;
+  background: rgb(255, 255, 255);
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
 }
@@ -112,3 +128,76 @@
 .card-link1 a:hover {
   color: #0090aa;
 }
+
+
+#submit-btn2{
+  height:50px;
+  position:relative; 
+  left:0px;/*アイコン左右の位置調整*/
+  top:0px;
+  background:none;
+  color: #741c9c;
+  border:none;
+  font-size:20px;/*アイコンサイズ*/
+  }
+
+  #submit-form2{
+    position: relative;
+    left: 11px;
+    height:39px;
+    width: 300px;
+    padding:0 10px; 
+    border-radius:2px;
+    outline:0;
+    background:rgb(255, 255, 255);	
+  }
+
+
+  .user_result{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px;
+  }
+
+
+  .card3 {
+    display: inline-block;
+    margin: 25px auto;
+    width: 350px;
+    height: 320px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+  .card-img3 {
+    border-radius: 5px 5px 0 0;
+    max-width: 100%;
+    height: 200px;
+  }
+  .card-content3 {
+    padding: 20px;
+  }
+  .card-title3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #333;
+  }
+  .card-text3 {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .card-link3 {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding: 20px;
+  }
+  .card-link3 a {
+    text-decoration: none;
+    color: #0bd;
+    margin: 0 10px;
+  }
+  .card-link3 a:hover {
+    color: #0090aa;
+  }

@@ -53,3 +53,47 @@
   .card-link a:hover {
     color: #0090aa;
   }
+  
+  #submit-btn1{
+  height:50px;
+  position:relative; 
+  left:0px;/*アイコン左右の位置調整*/
+  top:-45px;
+  background:none;
+  color: #741c9c;
+  border:none;
+  font-size:20px;/*アイコンサイズ*/
+  }
+
+  #submit-form1{
+    position: relative;
+    left: 900px;
+    height:39px;
+    width: 300px;
+    padding:0 10px; 
+    border-radius:2px;
+    outline:0;
+    background:rgb(255, 255, 255);	
+  }
+
+  .plus-icon{
+    color: rgb(178, 149, 255);
+    position: absolute;
+    
+  }
+
+  // event 一覧
+   .event_day{
+     font-size: 50px;
+     margin-left: 60px;
+   }
+
+   .event_hour{
+    font-size: 30px;
+    margin-left: 20px;
+   }
+
+   .event_title{
+     font-size: 50px;
+     margin-left: 140px;
+   }

@@ -30,5 +30,13 @@
       <%= link_to event.title, user_post_path(@user, event) %>
     </div>
   <% end %>
+  
+<% end %>
+
+<% @events.each do |event| %>
+  <a class="event_day"><%= "#{event.start_time.strftime( "%d" )}日" %></a>
+  <a class="event_hour"><%= "#{event.start_time.strftime( "%H:%M~" )}" %></a>
+  <a class="event_title"><%= event.title %></a>
+  <hr>
 <% end %>
 

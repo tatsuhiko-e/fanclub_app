@@ -20,20 +20,17 @@
   </ul>
 
 
+	<h1 class="user-name"><%= "ABOUT #{@user.name}" %></h1>
+	<p class="profile text-center"><%= @user.profile %></p>
 
-
-    <div class="text-center">
-      <div class="name-font"><%= "ABOUT #{@user.name}" %></div>
-      <div class="profile"><%= @user.profile %></div>
-    </div>
- 
 
   <% if @user.id == current_user.id %>
     <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
   <% end %>
   
 <!- メンバー一覧 ->
-  <div class="member">
+<h2 class="font7">member</h2>  
+<div class="member">
     <% @user.members.each do |member| %>
     
       <section class="card1">
@@ -46,7 +43,7 @@
     <% end %>
     <% end %>
   </div>
-
+</div>
 
 <% else %>
   <div class="text-right"><%= link_to "編集する", edit_user_path %></div>

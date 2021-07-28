@@ -6,6 +6,10 @@ class Post < ApplicationRecord
   has_many :comments
   validate :limit_image
 
+  def self.search(keyword)
+    where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
     def limit_image
       if image.attached?
         if !image.content_type.in?(%('image/jpeg image/png'))
