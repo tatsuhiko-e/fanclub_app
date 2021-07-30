@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   root to: 'home#about'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -14,6 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    member do
+      get :followings
+      get :followers
+    end
     resources :members
     resources :posts do
       resources :likes, only: [:create]
@@ -23,9 +29,10 @@ Rails.application.routes.draw do
         get 'event'
       end
     end
-   
     resources :videos
   end
+
+  resources :relationships, only: [:create, :destroy]
 
   
   

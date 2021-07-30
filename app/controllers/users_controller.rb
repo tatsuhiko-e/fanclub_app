@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @events = @user.posts.order(start_time: :desc).limit(2)
+    @posts = @user.posts.order(created_at: :desc).limit(2)
   end
 
   def edit
@@ -21,18 +23,9 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to user_path(current_user.id)
     else 
-      
       render :edit
     end
-    
-   
-    
   end
-
-  def likelist
-    @posts = current_user.like_posts
-  end
-
 
   private
   def user_params

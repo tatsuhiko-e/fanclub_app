@@ -25,6 +25,10 @@ body {
     min-width: 1200px;
 }
 
+.pagination {
+  justify-content: center;
+}
+
 .container{
   background-color: #f1f1f1;
   overflow: hidden;
@@ -144,4 +148,3 @@ body {
 .month1 {
   font-size: 60px;
 }
-

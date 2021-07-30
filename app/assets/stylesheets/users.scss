@@ -201,3 +201,52 @@
   .card-link3 a:hover {
     color: #0090aa;
   }
+
+  .font8{
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 1120px;
+    border-bottom: solid;
+    border-color: #741c9c;;
+  }
+
+  // user show 次のイベント
+
+  .card4 {
+    margin: 30px auto;
+    display: flex;
+    width: 1000px;
+    height: 300px;
+    background: #fff;
+    border-radius: 0px;
+    box-shadow: 0 2px 5px #ccc;
+  }
+  .card-img4 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .card-content4 {
+    padding: 20px;
+  }
+
+  .card-title4 {
+    font-size: 60px;
+    margin-left: 70px;
+    text-align: center;
+    color: #333;
+  }
+
+  .card-text4 {
+    color: #777;
+    font-size: 30px;
+    margin-left: 70px;
+  }
+
+
+  .all_look{
+    font-size: 30px;
+    margin-right: 90px;
+  }

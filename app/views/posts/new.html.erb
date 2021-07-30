@@ -1,27 +1,38 @@
 <% if @user.id == current_user.id %>
   <%= form_with(model:[@user, @post], method: :post) do |f| %>
-    <div class="form-check">
-      <%= f.label :event, 'イベント投稿' %>
-      <%= f.check_box :event, class: 'form-chedk-input' %>
+    
+    <div class="text-center">
+      <%= f.label :event, 'イベント' %>
+      <%= f.check_box :event, class: "" %>
     </div>
 
-    <div class="time">
-      <%= f.label :start_time %>
-      <%= f.datetime_select :start_time %>
+    <div class="text-center">
+      <%= f.file_field :image, class: "text-center", style: "" %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :title, 'タイトル' %>
+    <div class="time text-center">
+      <%= f.label :開始日時 %><br>
+      <%= f.datetime_select :start_time, class:"form-select", id: "exampleSelect1" %>
+    </div>
+
+    <div class="form-group text-center">
+      <%= f.label :title, 'タイトル' %><br>
       <%= f.text_field :title %>
     </div>
-    <div class="form-group">
-    <%= f.label :body, '本文' %>
-      <%= f.text_area :body %>
+
+    <div class="form-group text-center">
+      <%= f.label :body, '本文' %><br>
+      <%= f.text_area :body, :size=>"60x10" %>
     </div>
-    <div>
-      <%= f.file_field :image %><br>
+
+    <div class="form-group text-center">
+      <%= f.label :place, '会場' %><br>
+      <%= f.text_field :place %>
     </div>
-    <%= f.submit %>
+   
+    <div class="text-center">
+      <%= f.submit %>
+    </div>
   <% end %>
 <% end %>
 

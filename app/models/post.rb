@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
   has_many :comments
+
+  validates :title, length: { in: 1..15 }   
+  validates :body,  length: { in: 1..75 }        
   validate :limit_image
 
   def self.search(keyword)

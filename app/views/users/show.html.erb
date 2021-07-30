@@ -19,17 +19,19 @@
     </li> 
   </ul>
 
-
 	<h1 class="user-name"><%= "ABOUT #{@user.name}" %></h1>
+  <div class=""><%= render 'relationships/follow_button', user: @user %></div>
 	<p class="profile text-center"><%= @user.profile %></p>
 
 
-  <% if @user.id == current_user.id %>
-    <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
-  <% end %>
+  
   
 <!- メンバー一覧 ->
+
 <h2 class="font7">member</h2>  
+<% if @user.id == current_user.id %>
+    <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
+<% end %>
 <div class="member">
     <% @user.members.each do |member| %>
     
@@ -43,7 +45,37 @@
     <% end %>
     <% end %>
   </div>
-</div>
+
+
+<h2 class="font8">近日のイベント</h2>
+  <% @events.each do |event| %>
+    <section class="card4">
+      <%= link_to user_post_path(@user, event.id), class: "" do %>
+        <div class=""><%= image_tag(event.image.variant(resize:'1000x300'), class: "img-fluid card-img1") %></div>
+        <div>
+          <a class="card-title4"><%= event.title %></a><br>
+          <a class="card-text4"><%= event.start_time.strftime("%m月%d日") %></a><br>
+          <a class="card-text4"><%= event.place %></a>
+        </div>
+      </section>
+    <% end %>
+  <% end %>
+  <div class="all_look text-right"><%= link_to "もっと見る", event_user_posts_path(@user) %></div>
+
+  <h2 class="font8">最近の投稿</h2>
+  <% @posts.each do |post| %>
+    <section class="card4">
+      <%= link_to user_post_path(@user, post.id), class: "" do %>
+        <div class=""><%= image_tag(post.image.variant(resize:'1000x300'), class: "img-fluid card-img1") %></div>
+        <div>
+          <a class="card-title4"><%= post.title %></a><br>
+          <a class="card-text4"><%= post.body.truncate(20) %></a>
+        </div>
+      </section>
+    <% end %>
+  <% end %>
+  <div class="all_look text-right"><%= link_to "もっと見る", user_posts_path(@user) %></div>
+
 
 <% else %>
   <div class="text-right"><%= link_to "編集する", edit_user_path %></div>
@@ -78,23 +110,47 @@
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...
-        
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+          <% current_user.followings.reverse_each do |user| %>
+              <section class="card">
+                <div class="card-img"><%= image_tag(user.image.variant(gravity: :center).processed, class: "img-fluid") %></div>
+                <div class="card-content">
+                  <h1 class="card-title"><%= user.name %></h1>
+                </div>
+              </section>
+          <% end %>
+  
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <% current_user.like_posts.reverse_each do |post| %>
+            <% unless post.event? %>
               <section class="card">
-                
                 <div class="card-img"><%= image_tag(post.image.variant(gravity: :center).processed, class: "img-fluid") %></div>
                 <div class="card-content">
                   <h1 class="card-title"><%= post.title %></h1>
-                  <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
+                  
                 </div>
               </section>
+            <% end %>
        
           <% end %>
         </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <% current_user.like_posts.reverse_each do |post| %>
+            <% if post.event? %>
+              <section class="card">
+                <div class="card-img"><%= image_tag(post.image.variant(gravity: :center).processed, class: "img-fluid") %></div>
+                <div class="card-content">
+                  <h1 class="card-title"><%= post.title %></h1>
+                  
+                </div>
+              </section>
+            <% end %>
+       
+          <% end %>
+        
+        </div>
       </div>
   </div>
 

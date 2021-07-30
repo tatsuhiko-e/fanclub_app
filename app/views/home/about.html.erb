@@ -4,10 +4,11 @@
 <!-- メイン表示部分 -->
     <div class="swiper-wrapper">
     <!-- 各スライド -->
-    <div class="swiper-slide"><img src="/assets/01.jpg" alt style="width: 100%; height: 100%;"></div>
-    <div class="swiper-slide"><img src="/assets/02.jpg" alt style="width: 100%; height: 100%;"></div>
-    <div class="swiper-slide"><img src="/assets/03.jpg" alt style="width: 100%; height: 100%;"></div>
-    </div>
+    <% @users.last(6).each do |user| %>
+      <%= link_to  user_path(user),class:"swiper-slide"  do %>
+        <div class="swiper-img"><%= image_tag(user.image.variant(gravity: :center, resize:"1200x300^", crop:"1200x600+0+0").processed, class: "") %></div>
+      <% end %>
+    <% end %>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
@@ -62,20 +63,10 @@
     </div> 
   </li>
 </ul>
-    
-
-
-
-
-<%
-=begin%>
- 
-<%
-=end%>
 
 
 <h2 class="font4 ">新規ファンクラブ</h2>
-  <div class="member">
+  <div class="member1">
     <% @users.last(6).each do |user| %>
       <section class="card2">
       <%= link_to user_path(user), class: "" do %>
@@ -87,11 +78,11 @@
     <% end %>
     <% end %>
   </div>
-</div>
+
 
 <% if user_signed_in? %>
 <h2 class="font4 ">近くのアーティスト</h2>
-  <div class="member">
+  <div class="member1">
     <% @area_user.last(6).each do |user| %>
       <section class="card2">
       <%= link_to user_path(user), class: "" do %>

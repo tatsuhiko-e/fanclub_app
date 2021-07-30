@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @search = @user.posts.ransack(params[:q])
-    @results = @search.result.page(params[:page])
+    @results = @search.result.page(params[:page]).per(8)
     unless @user.admin?
       redirect_to @user
     end
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :event, :image, :start_time)
+    params.require(:post).permit(:title, :body, :event, :image, :start_time, :place)
   end
 
   def set_post
