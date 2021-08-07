@@ -46,11 +46,6 @@ class PostsController < ApplicationController
     redirect_to action: :index
   end
 
-  def event
-    @user = User.find_by(id: params[:user_id])
-    @events = @user.posts.where(event: true)
-  end
-
 
   private
 
@@ -59,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :event, :image, :start_time, :place)
+    params.require(:post).permit(:title, :image)
   end
 
   def set_post

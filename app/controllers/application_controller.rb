@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+    def counts(user)
+      @count_followings = user.followings.count
+      @count_followers = user.followers.count
+    end
+
 
     protected
   

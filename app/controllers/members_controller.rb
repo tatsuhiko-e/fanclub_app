@@ -51,7 +51,7 @@ class MembersController < ApplicationController
   end
 
   def member_params
-    params.require(:member).permit(:name, :profile, :age, :image)
+    params.require(:member).permit(:name, :profile, :age, :twitter, :instagram, :email, :birthday, :image)
   end
 
   def ensure_correct_user

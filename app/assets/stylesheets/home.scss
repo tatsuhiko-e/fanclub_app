@@ -23,7 +23,12 @@
   .swiper-wrapper{
     max-height: 600px;
     max-width: 1200px; 
+    
    
+  }
+
+  .swiper-container{
+    background-color: rgb(218, 218, 218);
   }
 
 /* home/about.html.erb */
@@ -67,10 +72,9 @@
 
   .swiper_img{
     display: inline-block;
-    width: 1200px;
-    height: 300px;
+    
   
-    background: #e1f3ff;
+    background: #303030;
   }
   
   .font4{
@@ -79,7 +83,7 @@
     width: 1120px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 40px;
     
     border-bottom: thick double #741c9c;
 }
@@ -110,7 +114,7 @@
   height: auto;
 }
 .card-content1 {
-  padding: 20px;
+  padding: 0px;
 }
 .card-title1 {
   font-size: 20px;

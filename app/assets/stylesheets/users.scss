@@ -102,7 +102,7 @@
   height: auto;
 }
 .card-content1 {
-  padding: 20px;
+  padding: 10px;
 }
 .card-title1 {
   font-size: 20px;
@@ -159,26 +159,33 @@
     margin: 25px;
   }
 
+  $men: 0;
+  $women: 1;
+
 
   .card3 {
     display: inline-block;
     margin: 25px auto;
-    width: 350px;
-    height: 320px;
+    width: 530px;
+    height: 450px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px #ccc;
+    background-color: rgb(244, 250, 255);
   }
-  .card-img3 {
-    border-radius: 5px 5px 0 0;
-    max-width: 100%;
-    height: 200px;
+
+  .user-woman{
+    background-color: rgb(255, 244, 254);
   }
+ 
   .card-content3 {
-    padding: 20px;
+    padding: 10px;
+    margin-top: 20px;
   }
+
   .card-title3 {
-    font-size: 20px;
+    font-size: 30px;
+    margin-top: 0px;
     margin-bottom: 5px;
     text-align: left;
     color: #333;
@@ -191,7 +198,7 @@
   .card-link3 {
     text-align: center;
     border-top: 1px solid #eee;
-    padding: 20px;
+    padding: 20px 10px;
   }
   .card-link3 a {
     text-decoration: none;
@@ -200,6 +207,22 @@
   }
   .card-link3 a:hover {
     color: #0090aa;
+  }
+
+  .card-list3{
+    display: flex;
+  }
+
+  .card-text3{
+    list-style: none;
+    width: 470px;
+    font-size: 20px;
+  }
+
+  .card-count3{
+    list-style: none;
+    width: 80px;
+    font-size: 30px;
   }
 
   .font8{

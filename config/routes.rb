@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'events/index'
+  get 'events/new'
+  get 'events/create'
+  get 'events/edit'
+  get 'events/update'
+  get 'events/destroy'
   get 'relationships/create'
   get 'relationships/destroy'
   root to: 'home#about'
@@ -25,10 +31,8 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
       resource :like, only: [:destroy]
       resources :comments, only: [:create, :destroy]
-      collection do
-        get 'event'
-      end
     end
+    resources :events
     resources :videos
   end
 

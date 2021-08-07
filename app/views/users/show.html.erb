@@ -9,7 +9,7 @@
       <%= link_to "ブログ", user_posts_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "スケジュール", event_user_posts_path(@user), class: "" %>
+      <%= link_to "スケジュール", user_events_path(@user), class: "" %>
     </li>
     <li>
       <%= link_to "動画", user_videos_path(@user), class: "" %>
@@ -20,7 +20,9 @@
   </ul>
 
 	<h1 class="user-name"><%= "ABOUT #{@user.name}" %></h1>
+
   <div class=""><%= render 'relationships/follow_button', user: @user %></div>
+
 	<p class="profile text-center"><%= @user.profile %></p>
 
 
@@ -29,7 +31,8 @@
 <!- メンバー一覧 ->
 
 <h2 class="font7">member</h2>  
-<% if @user.id == current_user.id %>
+
+<% if user_signed_in? && @user.id == current_user.id %>
     <div class="text-right"><%= link_to "メンバーを追加する", new_user_member_path(@user) %></div>
 <% end %>
 <div class="member">
@@ -37,7 +40,7 @@
     
       <section class="card1">
       <%= link_to user_member_path(@user, member), class: "" do %>
-        <div class="card-title1 text-center"><%= image_tag(member.image.variant(gravity: :center, crop:"640x640+0+0").processed, class: "img-fluid card-img1") %></div>
+        <div class="card-title1 text-center"><%= image_tag(member.image.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0").processed, class: "img-fluid card-img1") %></div>
         <div class="card-content1">
           <h1 class="card-title1"><%= member.name %></h1>
         </div>
@@ -50,7 +53,7 @@
 <h2 class="font8">近日のイベント</h2>
   <% @events.each do |event| %>
     <section class="card4">
-      <%= link_to user_post_path(@user, event.id), class: "" do %>
+      <%= link_to user_events_path(@user, event.id), class: "" do %>
         <div class=""><%= image_tag(event.image.variant(resize:'1000x300'), class: "img-fluid card-img1") %></div>
         <div>
           <a class="card-title4"><%= event.title %></a><br>
@@ -60,16 +63,16 @@
       </section>
     <% end %>
   <% end %>
-  <div class="all_look text-right"><%= link_to "もっと見る", event_user_posts_path(@user) %></div>
+  <div class="all_look text-right"><%= link_to "もっと見る", user_events_path(@user) %></div>
 
   <h2 class="font8">最近の投稿</h2>
   <% @posts.each do |post| %>
     <section class="card4">
       <%= link_to user_post_path(@user, post.id), class: "" do %>
-        <div class=""><%= image_tag(post.image.variant(resize:'1000x300'), class: "img-fluid card-img1") %></div>
+        <div class=""><%= image_tag(post.image.variant(resize:'500x700'), class: "img-fluid card-img1") %></div>
         <div>
           <a class="card-title4"><%= post.title %></a><br>
-          <a class="card-text4"><%= post.body.truncate(20) %></a>
+
         </div>
       </section>
     <% end %>

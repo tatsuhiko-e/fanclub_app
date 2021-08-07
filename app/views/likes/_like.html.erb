@@ -1,13 +1,5 @@
-<% if post.event? %>
-  <% if current_user.already_liked?(@post) %>
-    <%= button_to '参加取り消し', user_post_like_path(@user, @post), class: 'btn btn-warning', method: :delete, remote: true %>
-  <% else %>
-    <%= button_to '参加', user_post_likes_path(@user, @post), class: 'btn btn-outline-dark', remote: true %>
-  <% end %>
+<% if current_user.already_liked?(@post) %>
+  <%= button_to 'いいね♡', user_post_like_path(@user, @post), class: 'btn btn-warning', method: :delete, remote: true %>
 <% else %>
-  <% if current_user.already_liked?(@post) %>
-    <%= button_to 'いいね♡', user_post_like_path(@user, @post), class: 'btn btn-warning', method: :delete, remote: true %>
-  <% else %>
-    <%= button_to 'いいね♡', user_post_likes_path(@user, @post), class: 'btn btn-outline-dark', remote: true %>
-  <% end %>
+  <%= button_to 'いいね♡', user_post_likes_path(@user, @post), class: 'btn btn-outline-dark', remote: true %>
 <% end %>

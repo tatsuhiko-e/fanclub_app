@@ -1,4 +1,8 @@
 <%= form_with(model:[@user, @member], method: :patch) do |f| %>
+  <div>
+    <%= f.file_field :image %><br>
+  </div>
+
   <div class="form-group">
     <%= f.label :name, '名前' %>
     <%= f.text_field :name %>
@@ -7,8 +11,25 @@
   <%= f.label :profile, '自己紹介' %>
     <%= f.text_area :profile %>
   </div>
-  <div>
-    <%= f.file_field :image %><br>
+
+  <div class="date-input" ><p>生年月日（年/月/日）</p>
+    <%= f.date_select :birthday, start_year: Time.now.year - 60, end_year: Time.now.year - 10, default: Date.new(1989, 1, 1), use_month_numbers: true %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :twitter, 'Twitter_URL' %>
+    <%= f.text_field :twitter %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :instagram, 'instagram_URL' %>
+    <%= f.text_field :instagram %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.text_field :email %>
+  </div>
+ 
   <%= f.submit %>
 <% end %>

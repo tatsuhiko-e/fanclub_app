@@ -7,7 +7,7 @@
       <%= link_to "ブログ", user_posts_path(@user), class: "" %>
     </li>
     <li>
-      <%= link_to "スケジュール", event_user_posts_path(@user), class: "" %>
+      <%= link_to "スケジュール", user_events_path(@user), class: "" %>
     </li>
     <li>
       <%= link_to "動画", user_videos_path(@user), class: "" %>
@@ -27,7 +27,7 @@
 
   <div class="text-right">
     <%= search_form_for @search, url: user_posts_path do |f| %>
-      <%= f.search_field :title_or_body_cont, class: 'form-control me-sm-2', id: "submit-form1"%>
+      <%= f.search_field :title_cont, class: 'form-control me-sm-2', id: "submit-form1"%>
       <%= f.button :type => "submit", id: 'submit-btn1' do %>
         <i class='fas fa-search'></i>
       <% end %>
@@ -36,33 +36,12 @@
   
 <!- post一覧 ->
   
-<div class="container" style="">
+
+ <div class="container gallery text-center" style="">
   <% @results.reverse_each do |post| %>
-    <% if post.event? %>
-      <section class="card">
-        <%= link_to user_post_path(@user, post), class: " text-dark" do %>
-        <img class="card-img" src="" alt="">
-        <div class="card-content">
-          <h1 class="card-title"><%= post.title %></h1>
-          <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
-        </div>
-        <% end %>
-      </section>
-    
-    <% else %>
-      <section class="card">
-        <%= link_to user_post_path(@user, post), class: " text-dark" do %>
-        <div class="card-img"><%= image_tag(post.image.variant(gravity: :center).processed, class: "img-fluid") %></div>
-        <div class="card-content">
-          <h1 class="card-title"><%= post.title %></h1>
-          <p class="card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
-        </div>
-        <% end %>
-      </section>
-    <% end %>
+    <%= link_to image_tag(post.image.variant(combine_options:{gravity: :center, resize:"585x585^", crop:"585x585+0+0"}).processed, class: "post-image"), user_post_path(@user, post) %>
   <% end %>
   <div class="text-center">
   <%= paginate @results %>
   </div>
-</div>
-
+</div> 

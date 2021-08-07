@@ -25,12 +25,15 @@
 
 <div class="container user_result" style="">
   <% @user_results.reverse_each do |user| %>
-      <section class="card3">
+      <section class="card3 <%= ' user-woman' if user.gender == "女" %>">
         <%= link_to user_path(user), class: " text-dark" do %>
-        <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x640+0+0").processed, class: "img-fluid") %></div>
+        <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
         <div class="card-content3">
-          <h1 class="card-title3"><%= user.name %></h1>
-          <p class="card-text3">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
+          <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
+     
+          <ul class="card-list3">
+            <li class="card-text3"><%= user.profile.truncate(50) %></li>
+            <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
         </div>
         <% end %>
       </section>

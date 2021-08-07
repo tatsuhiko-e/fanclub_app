@@ -7,7 +7,7 @@
       <%= link_to "ブログ", user_posts_path(@user), class: "" %>
     </li>
     <li class="current">
-      <%= link_to "スケジュール", event_user_posts_path(@user), class: "" %>
+      <%= link_to "スケジュール", user_events_path(@user), class: "" %>
     </li>
     <li>
       <%= link_to "動画", user_videos_path(@user), class: "" %>
@@ -20,20 +20,21 @@
 
 
 <% if @user.id == current_user.id %>
-  <%= link_to '日記をかく', new_user_post_path %>
+  <%= link_to '日記をかく', new_user_event_path %>
 <% end %>
 
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
   <% events.each do |event| %>
     <div>
-      <%= link_to event.title, user_post_path(@user, event) %>
+      <%= link_to event.title, user_event_path(@user, event) %>
     </div>
   <% end %>
   
 <% end %>
 
-<% @events.each do |event| %>
+<% @events.reverse.each do |event| %>
+  
   <a class="event_day"><%= "#{event.start_time.strftime( "%d" )}日" %></a>
   <a class="event_hour"><%= "#{event.start_time.strftime( "%H:%M~" )}" %></a>
   <a class="event_title"><%= event.title %></a>

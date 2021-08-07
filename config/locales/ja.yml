@@ -24,7 +24,7 @@ ja:
     am: "午前"
     pm: "午後"
 
-ja:
+
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

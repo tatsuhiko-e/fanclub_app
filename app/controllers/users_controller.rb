@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = @user.posts.order(start_time: :desc).limit(2)
+    @events = @user.events.order(start_time: :desc).limit(2)
     @posts = @user.posts.order(created_at: :desc).limit(2)
   end
 

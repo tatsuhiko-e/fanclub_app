@@ -1,40 +1,8 @@
-<% if @post.event? %>
-  <% if @post.image.nil? %>
-    <div class="text-center"><%= image_tag(@post.user.image) %></div>
-  <% else %>
-    <div class='text-center'><%= image_tag(@post.image.variant(gravity: :center, resize:"640x640^").processed, class: "img-fluid") %></div>
-  <% end %>
-  <div class="text-center event_title_show"><%= @post.title %></div>
-  
-  <hr>
-  <a class="event">イベント会場</a>
-  <a class="text-center event_area_show"><%= @post.place %></a>
-  <hr>
-  <a class="event_time">開始時間</a>
-  <a class="text-center event_starttime"><%= @post.start_time.strftime("%m月%d日 %H:%M") %></a>
-  <hr>
-  <div class="container_remarks">
-    <a class="event_remarks">備考</a>
-    <a class="event_remarks_text"><%= safe_join(@post.body.split("\n"),tag(:br)) %></a>
-  </div>
-  <hr>
-  <div class="text-center">
-  <%= render partial: "likes/like", locals: {post: @post} %>
-  
-  <% if current_user.admin? %> 
-    <div class="text-right">
-    <%= link_to 'このメッセージを削除する', user_post_path(@user, @post), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
-    <%= link_to 'このメッセージを編集する', edit_user_post_path(@user, @post) %>
-    </div>
-  <% end %>
 
-
-<% else %>
   <div class='text-center'><%= @post.title %></div>
   <div class='text-center'><%= image_tag(@post.image.variant(gravity: :center, resize:"640x640^").processed, class: "img-fluid") %></div>
-  <div class='text-center'><%= @post.body %></div>
 
-  <% if current_user.admin? %> 
+  <% if current_user %> 
     <%= link_to 'このメッセージを削除する', user_post_path(@user, @post), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
     <%= link_to 'このメッセージを編集する', edit_user_post_path(@user, @post) %>
   <% end %>
@@ -58,4 +26,3 @@
       <hr>
       <% end %>
   </div>
-<% end %>

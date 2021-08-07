@@ -1,26 +1,28 @@
-<h2>Log in</h2>
+<h2 class="sgin_up text-center">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="field text-center ">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
-  <div class="field">
+  <div class="field text-center">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="field text-center">
+      <%= f.check_box :remember_me, class: "form-check-input", type: "checkbox", value: "", id: "flexCheckDefault" %>
+      <%= f.label :remember_me, class: "form-check-label", for: "flexCheckDefault" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="actions text-center my-4">
+    <%= f.submit "Log in", class: "btn btn-outline-primary" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="actions text-center">
+  <%= render "devise/shared/links" %>
+</div>
