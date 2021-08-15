@@ -21,11 +21,16 @@
     <div class="text-right"><%= link_to "ムービーを追加する", new_user_video_path(@user) %></div>
   <% end %>
   
-<!- メンバー一覧 ->
-  
   <% @user.videos.each do |video| %>
-    <div class="text-center"><%= video.title %></div>
-    <div class="text-center">
-    <iframe width="1120" height="630" src="https://www.youtube.com/embed/<%= video.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="">
+    <div class=" video-title mt-5"><%= link_to video.title, user_video_path(@user, video) %></div>
+    <div class="text-center video-content">
+      <iframe width="1000" height="563" src="https://www.youtube.com/embed/<%= video.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    <ul class="video-item">
+      <li><%= video.created_at.strftime('%Y/%m/%d') %></li>
+      <li class="video-li-right">コメント数</li>
+      <li class="ml-3">お気に入り数</li>
+    </ul>
+    <hr>
   <% end %>

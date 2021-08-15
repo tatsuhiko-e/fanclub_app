@@ -32,9 +32,17 @@ Rails.application.routes.draw do
       resource :like, only: [:destroy]
       resources :comments, only: [:create, :destroy]
     end
-    resources :events
+    resources :events do
+      resources :tickets, only: [:create]
+      resource :ticket, only: [:destroy]
+      member do
+        get :ticket_users
+      end
+    end
     resources :videos
   end
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
 
   resources :relationships, only: [:create, :destroy]
 

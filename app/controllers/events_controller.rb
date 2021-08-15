@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_user, only: [:index, :show, :new, :edit, :update]
-  before_action :set_event, only: [:destroy, :edit, :update]
+  before_action :set_event, only: [:destroy, :edit, :update, :ticket_users]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -40,6 +40,10 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to action: :index
+  end
+
+  def ticket_users
+    @users = @event.ticketed_users.all
   end
 
   private

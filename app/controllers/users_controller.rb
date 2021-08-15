@@ -4,16 +4,38 @@ class UsersController < ApplicationController
   
 
   def index
-    @user_search = User.ransack(params[:q])
+    @users = User.where(admin: true)
+    @user_search = @users.ransack(params[:q])
     @user_results = @user_search.result.page(params[:page])
   end
 
   def show
     @events = @user.events.order(start_time: :desc).limit(2)
     @posts = @user.posts.order(created_at: :desc).limit(2)
+    
+    
+    # DM
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
-  def edit
+  def edit   
     unless @user == current_user
       redirect_to user_path(current_user.id)
     end

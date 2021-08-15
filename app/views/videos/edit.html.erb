@@ -1,0 +1,20 @@
+<% if @user.id == current_user.id %>
+
+  <h2 class="sgin_up text-center">編集</h2>
+
+  <%= form_with(model:[@user, @video], method: :patch) do |f| %>
+    <div class="form-group text-center field mt-5">
+      <%= f.label :title, 'タイトル' %><br>
+      <%= f.text_field :title, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
+    </div>
+
+    <div class="form-group text-center field">
+    <%= f.label :youtube_url, 'YouTube_URL' %><br>
+      <%= f.text_field :youtube_url, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
+    </div>
+
+    <div class="form-group text-center field mt-5">
+      <%= f.submit "動画の投稿", class: "btn btn-large btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

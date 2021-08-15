@@ -1,3 +1,53 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.event-bodyform{
+  
+  position: relative;
+  right: 130px;
+}
+
+
+
+.ticketuser-list{
+  position:  relative;  
+  list-style: none;
+  display: flex;
+  margin-left : 100px;
+
+}
+
+.ticketuser-list li{
+  margin-right: 10px;
+}
+
+.ticketuser-list li:last-child{
+  align-items: right;
+  position: absolute;
+  left: 800px;
+}
+
+.tickets{
+  font-size: 50px;
+
+}
+
+// ticket_users_page
+.ticket_users{
+  margin-top: 30px;
+  list-style: none;
+  display: flex;
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ticket_users li{
+  font-size: 40px;
+}
+
+.ticket_users_name{
+  margin-top: 25px;
+  margin-left: 30px;
+}

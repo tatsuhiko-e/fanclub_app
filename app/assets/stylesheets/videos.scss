@@ -1,3 +1,44 @@
 // Place all the styles related to the videos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.video-title{
+  position: relative;
+  left: 100px;
+  font-size: 50px;
+ 
+}
+
+.video-content{
+  padding-top: 40px;
+  border-top: solid;
+  border-color: #741c9c;
+  padding-bottom: 20px;
+}
+
+.video-item{
+  display: flex;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  list-style: none;
+  padding: 0;
+
+
+}
+
+.video-item li{
+  font-size: 25px;
+}
+
+.video-li-right{
+  margin-left: auto;
+}
+
+.video-title-show{
+  font-size: 50px;
+  margin-top: 30px;
+  
+}

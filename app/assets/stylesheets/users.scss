@@ -7,6 +7,16 @@
     font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
 }
 
+ .follow_button{
+   position: relative;
+   bottom: 80px;
+   right: 30px;
+ }
+
+ .follow{
+   color: rgb(240, 202, 35);
+ }
+
 
 
 .table-ul {
@@ -272,4 +282,49 @@
   .all_look{
     font-size: 30px;
     margin-right: 90px;
+  }
+
+  //一般ユーザー
+  .name-item{
+    list-style: none;
+  
+  }
+
+  .edit-icon{
+    margin-left: 20px;
+  }
+
+  .name-item li{
+    display: inline;
+  }
+ 
+  .card-title5{
+    font-size: 30px;
+    margin-left: 40px;
+  }
+
+  .name-font1{
+    font-size: 50px;
+    margin-top: 20px;
+
+  }
+
+  .list-inline-item{
+    position: relative;
+    right: 89px;
+    top: -20px;
+  }
+
+  .name-font2{
+    font-size: 40px;
+  }
+
+  .form-select{
+    margin-left: 500px;
+  }
+
+
+  .image-input{
+    position: relative;
+    right: 90px;
   }
