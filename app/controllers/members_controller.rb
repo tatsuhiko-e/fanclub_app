@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :redirect_to_root, only: [:new]
   before_action :set_user, only: [:show, :new, :edit]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
@@ -17,7 +19,7 @@ class MembersController < ApplicationController
     @member.user_id = current_user.id
     if @member.save
       flash[:notice] = 'メッセージを投稿しました。'
-      redirect_to("users/#{current_user.id}/members/#{@member.id}")
+      redirect_to member_path(@member)
     else
       render("/members/new")
     end
@@ -29,7 +31,7 @@ class MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      redirect_to 
+      redirect_to member_path(@member)
     else
       render 'edit'
     end
@@ -37,7 +39,7 @@ class MembersController < ApplicationController
 
   def destroy
     @member.destroy
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   private
@@ -56,7 +58,11 @@ class MembersController < ApplicationController
 
   def ensure_correct_user
     if @member.user_id != current_user.id
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
+  end
+
+  def redirect_to_root
+    redirect_to user_path(current_user) if current_user.admin == false
   end
 end

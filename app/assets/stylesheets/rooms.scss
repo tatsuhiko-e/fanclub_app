@@ -1,3 +1,13 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dm-name-box{
+  list-style: none;
+  margin-top: 10px;
+}
+
+.dm-name-box li{
+  font-size: 30px;
+  display: inline;
+}

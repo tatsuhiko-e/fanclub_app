@@ -1,11 +1,13 @@
-<% if current_user.already_ticket?(event) %>
-  <%= button_to  user_event_ticket_path(@user, event), class: 'btn btn-outline-dark', method: :delete do %>
-    <div>
-      <div class="ticket-button2"><i class="fas fa-minus ticket-button"> </i>取り消し</div>
-    </div>
-  <% end %>
-<% else %>
-  <%= button_to user_event_tickets_path(@user, event), class: 'btn btn-warning' do %>
-    <div class="ticket-button2"><i class="fas fa-plus ticket-button"></i>参加する</div>
+<% if user_signed_in? %>
+  <% if current_user.already_ticket?(event) %>
+    <%= button_to event_ticket_path(event), class: 'btn btn-outline-dark', method: :delete, remote: true do %>
+      <div>
+        <div class="ticket-button2"><i class="fas fa-minus ticket-button"> </i>取り消し</div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= button_to event_tickets_path(event), class: 'btn btn-warning', remote: true do %>
+      <div class="ticket-button2"><i class="fas fa-plus ticket-button"></i>参加する</div>
+    <% end %>
   <% end %>
 <% end %>

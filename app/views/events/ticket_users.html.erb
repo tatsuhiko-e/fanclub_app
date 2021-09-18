@@ -1,3 +1,5 @@
+<div class='text-center'><%= image_tag(@event.image.variant(gravity: :center, resize:"640x640^").processed, class: "img-fluid") %></div>
+
 <% @users.each do |user| %>
   <ul class="ticket_users">
     <li><%= link_to image_tag(user.image.variant(combine_options:{gravity: :center, resize:"100x100^", crop:"100x100+0+0"}).processed, class: "ticket-image"), user_path(user) %></li>

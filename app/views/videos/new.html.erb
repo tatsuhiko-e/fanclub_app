@@ -1,8 +1,6 @@
-<% if @user.id == current_user.id %>
-
+<% if current_user.admin? %>
   <h2 class="sgin_up text-center">動画の投稿</h2>
-
-  <%= form_with(model:[@user, @video], method: :post) do |f| %>
+  <%= form_with(model:[@video], method: :post) do |f| %>
     <div class="form-group text-center field mt-5">
       <%= f.label :title, 'タイトル' %><br>
       <%= f.text_field :title, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>

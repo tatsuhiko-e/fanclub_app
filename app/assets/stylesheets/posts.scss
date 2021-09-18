@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.post-title{
+  font-size: 60px;
+
+}
+
 .container{
     width: max;
     max-width: 1200px;
@@ -115,5 +120,18 @@
      display: flex;
    }
 
-   //画像投稿ボタン
+  .comment-form-ul{
+    margin-left: 100px;
+    list-style: none;
+    display: flex;
+  }
+
+  .form-control1{
+    width: 800px;
+  }
   
+  .post-title-button{
+    display: flex;
+    justify-content: center;
+  }
+

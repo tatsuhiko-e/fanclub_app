@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_user, only: [:index, :show, :new, :destroy, :edit, :update]
   before_action :set_post, only: [:show, :destroy, :edit, :update]
+  before_action :authenticate_user!, only: [:show, :new, :destroy, :edit, :update]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-
+  before_action :redirect_to_root, only: [:new]
+  
   def index
+    @user = User.find_by(id: params[:user_id])
     @search = @user.posts.ransack(params[:q])
-    @results = @search.result.page(params[:page]).per(8)
-    unless @user.admin?
-      redirect_to @user
-    end
+    @results = @search.result.page(params[:page]).per(6)
   end
 
   def show
@@ -23,7 +22,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to action: :index
+      redirect_to post_path(@post)
     else
       flash[:alert] = "投稿に失敗しました"
       render :new
@@ -35,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to action: :index
+      redirect_to post_path(@post)
     else
       render :edit
     end
@@ -43,27 +42,26 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to action: :index
+    redirect_to user_posts_path(@post.user_id)
   end
-
 
   private
-
-  def set_user
-    @user = User.find_by(id: params[:user_id])
-  end
 
   def post_params
     params.require(:post).permit(:title, :image)
   end
 
   def set_post
-    @post = @user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def ensure_correct_user
     if @post.user_id != current_user.id
       redirect_to root_path
     end
+  end
+  
+  def redirect_to_root
+    redirect_to user_path(current_user) if current_user.admin == false
   end
 end

@@ -17,9 +17,9 @@
     </li> 
   </ul>
 
-  <% if @user.id == current_user.id %>
+  <% if user_signed_in? && @user.id == current_user.id %>
     <div class="text-center mt-3">
-      <%= link_to new_user_post_path(@user) do %>
+      <%= link_to new_post_path do %>
         <i class="fas fa-plus-circle fa-4x plus-icon"></i>
       <% end %>
     </div>
@@ -37,11 +37,12 @@
 <!- post一覧 ->
   
 
- <div class="container gallery text-center" style="">
+<div class="container gallery text-center" style="">
   <% @results.reverse_each do |post| %>
-    <%= link_to image_tag(post.image.variant(combine_options:{gravity: :center, resize:"585x585^", crop:"585x585+0+0"}).processed, class: "post-image"), user_post_path(@user, post) %>
+    <%= link_to image_tag(post.image.variant(combine_options:{gravity: :center, resize:"585x585^", crop:"585x585+0+0"}).processed, class: "post-image"), post_path(post) %>
   <% end %>
-  <div class="text-center">
-  <%= paginate @results %>
-  </div>
+  
 </div> 
+<div class="text-center">
+    <%= paginate @results %>
+  </div>

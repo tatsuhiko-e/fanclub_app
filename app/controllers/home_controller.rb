@@ -5,5 +5,4 @@ class HomeController < ApplicationController
       @area_user = User.where(area: current_user.area, admin: true)
     end
   end
-
 end

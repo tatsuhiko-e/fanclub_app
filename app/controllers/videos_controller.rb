@@ -1,7 +1,14 @@
 class VideosController < ApplicationController
-  before_action :set_user, only: [:index, :show, :new, :destroy, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
   before_action :set_video, only: [:show, :destroy, :edit, :update]
+  before_action :redirect_to_root, only: [:new]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  
+  
+  def index
+    @user = User.find_by(id: params[:user_id])
+    @videos = @user.videos
+  end
 
   def show
   end
@@ -16,10 +23,9 @@ class VideosController < ApplicationController
     url = params[:video][:youtube_url]
     url = url.last(11)
     @video.youtube_url = url
-
     if @video.save
       flash[:success] = 'メッセージを投稿しました。'
-      redirect_to action: :index
+      redirect_to video_path(@video)
     else
       render :new
     end
@@ -34,7 +40,7 @@ class VideosController < ApplicationController
       url = params[:video][:youtube_url]
       url = url.last(11)
       @video.youtube_url = url
-      redirect_to action: :index
+      redirect_to video_path(@video)
     else
       render :edit
     end
@@ -42,7 +48,7 @@ class VideosController < ApplicationController
 
   def destroy
     @video.destroy
-    redirect_to action: :index
+    redirect_to user_videos_path(@video.user_id)
   end
 
 
@@ -52,17 +58,17 @@ class VideosController < ApplicationController
     params.require(:video).permit(:title, :youtube_url)
   end
 
-  def set_user
-    @user = User.find_by(id: params[:user_id])
-  end
-
   def set_video
-    @video = @user.videos.find(params[:id])
+    @video = Video.find(params[:id])
   end
 
   def ensure_correct_user
     if @video.user_id != current_user.id
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
+  end
+
+  def redirect_to_root
+    redirect_to user_path(current_user) if current_user.admin == false
   end
 end

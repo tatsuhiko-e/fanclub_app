@@ -4,7 +4,7 @@ class Member < ApplicationRecord
 
     
     validates :name, presence: true, length: { maximum: 25 }
-    validates :profile, length: { maximum: 3000 }
+    validates :profile, length: { maximum: 500 }
     validate :limit_image
 
     def limit_image

@@ -4,7 +4,7 @@
   <iframe width="1000" height="563" src="https://www.youtube.com/embed/<%= @video.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-<% if current_user %> 
-  <%= link_to 'このメッセージを削除する', user_video_path(@user, @video), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
-  <%= link_to 'このメッセージを編集する', edit_user_video_path(@user, @video) %>
+<% if @video.user_id == current_user.id %>
+  <%= link_to 'この動画を削除する', video_path(@video), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+  <%= link_to 'この動画を編集する', edit_video_path(@video) %>
 <% end %>

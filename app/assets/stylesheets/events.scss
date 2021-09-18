@@ -14,23 +14,29 @@
   position:  relative;  
   list-style: none;
   display: flex;
-  margin-left : 100px;
+  margin-left : 190px;
 
 }
 
 .ticketuser-list li{
-  margin-right: 10px;
+  margin-right: 50px;
 }
 
 .ticketuser-list li:last-child{
   align-items: right;
   position: absolute;
-  left: 800px;
+  left: 700px;
+}
+
+.ticket_index{
+  position: relative;
+  top: -40px;
+  right: -800px;
 }
 
 .tickets{
+  margin-top: 20px;
   font-size: 50px;
-
 }
 
 // ticket_users_page
@@ -50,4 +56,17 @@
 .ticket_users_name{
   margin-top: 25px;
   margin-left: 30px;
+}
+
+.next-event-container{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.next-event{
+ 
+  font-size: 60px;
+  border-bottom: solid;
+  border-color: #741c9c;
 }

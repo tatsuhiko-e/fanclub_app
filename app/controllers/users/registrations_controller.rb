@@ -3,7 +3,24 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+
+
   
+  # def create
+  #   # Custom code to fix DateTime issue
+  #   Utils::convert_params_date_select params[:user][:profile_attributes], :birthday, nil, true
+
+  #   super
+  # end
+
+  # def sign_up_params
+  #   # TODO: Still need to fix this. Strong parameters with nested attributes not working.
+  #   #       Permitting all is a security hazard.
+  #   params.require(:user).permit!
+  #   #params.require(:user).permit(:email, :password, :password_confirmation, :profile_attributes)
+  # end
+  # private :sign_up_params
+
 
   # GET /resource/sign_up
   # def new

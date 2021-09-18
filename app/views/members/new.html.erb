@@ -1,38 +1,42 @@
-<%= form_with(model:[@user, @member], method: :post) do |f| %>
+  <h2 class="sgin_up text-center">メンバーの追加</h2>
+
+<%= form_with(model:[@member], method: :post) do |f| %>
+  <div class="form-group text-center field mt-4">
+    <%= f.label :image, 'プロフィール画像' %><br>
+    <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;" %>
   <div>
-    <%= f.file_field :image %><br>
-  </div>
 
-  <div class="form-group">
+  <div class="form-group text-center field mt-3">
     <%= f.label :name, '名前' %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group text-center field">
     <%= f.label :profile, '自己紹介' %>
-    <%= f.text_area :profile %>
+    <%= f.text_area :profile, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
-  <div class="date-input" ><p>生年月日（年/月/日）</p>
+  <div class="date-input text-center field" ><p>生年月日（年/月/日）</p>
     <%= f.date_select :birthday, start_year: Time.now.year - 60, end_year: Time.now.year - 10, default: Date.new(1989, 1, 1), use_month_numbers: true %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group text-center field">
     <%= f.label :twitter, 'Twitter_URL' %>
-    <%= f.text_field :twitter %>
+    <%= f.text_field :twitter, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group text-center field">
     <%= f.label :instagram, 'instagram_URL' %>
-    <%= f.text_field :instagram %>
+    <%= f.text_field :instagram, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group text-center field">
     <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
   </div>
 
 
-  
-  <%= f.submit %>
+  <div class="form-group text-center field mt-5">
+    <%= f.submit "変更を保存", class: "btn btn-large btn-primary" %>
+  </div>
 <% end %>

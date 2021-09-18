@@ -70,7 +70,7 @@
     margin-top: 20px;
     width: 1120px;
     border-bottom: solid;
-    border-color: #741c9c;;
+    border-color: #741c9c;
   }
 
   .profile{
@@ -181,11 +181,11 @@
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px #ccc;
-    background-color: rgb(244, 250, 255);
+    background-color: #fff;
   }
 
   .user-woman{
-    background-color: rgb(255, 244, 254);
+    background-color: #fff;
   }
  
   .card-content3 {
@@ -245,7 +245,7 @@
     border-color: #741c9c;;
   }
 
-  // user show 次のイベント
+  // user show 近日のイベント
 
   .card4 {
     margin: 30px auto;
@@ -285,14 +285,23 @@
   }
 
   //一般ユーザー
+  .user-image{
+    object-fit:cover;
+	  border-radius:50%;
+  }
+
   .name-item{
     list-style: none;
-  
   }
 
   .edit-icon{
     margin-left: 20px;
   }
+
+  .sms-icon{
+    display: inline;
+  }
+
 
   .name-item li{
     display: inline;
@@ -304,7 +313,7 @@
   }
 
   .name-font1{
-    font-size: 50px;
+    font-size: 80px;
     margin-top: 20px;
 
   }

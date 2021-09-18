@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  before_action :set_event
+  before_action :authenticate_user!
 
   def index
     
@@ -11,5 +13,11 @@ class TicketsController < ApplicationController
   def destroy
     @ticket = current_user.tickets.find_by(event_id: params[:event_id])
     @ticket.destroy
+  end
+
+  private
+
+  def set_event
+    @event = Event.find(params[:event_id])
   end
 end

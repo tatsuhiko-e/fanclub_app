@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'events/index'
-  get 'events/new'
-  get 'events/create'
-  get 'events/edit'
-  get 'events/update'
-  get 'events/destroy'
-  get 'relationships/create'
-  get 'relationships/destroy'
+  # get 'events/index'
+  # get 'events/new'
+  # get 'events/create'
+  # get 'events/edit'
+  # get 'events/update'
+  # get 'events/destroy'
+  # get 'relationships/create'
+  # get 'relationships/destroy'
   root to: 'home#about'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -26,21 +26,26 @@ Rails.application.routes.draw do
       get :followings
       get :followers
     end
-    resources :members
-    resources :posts do
-      resources :likes, only: [:create]
-      resource :like, only: [:destroy]
-      resources :comments, only: [:create, :destroy]
-    end
-    resources :events do
-      resources :tickets, only: [:create]
-      resource :ticket, only: [:destroy]
-      member do
-        get :ticket_users
-      end
-    end
-    resources :videos
+    resources :posts, only: [:index]
+    resources :events, only: [:index]
+    resources :videos, only: [:index] 
   end
+
+  resources :members
+  resources :videos
+  resources :posts do
+    resources :likes, only: [:create]
+    resource :like, only: [:destroy]
+    resources :comments, only: [:create, :destroy]
+  end
+  resources :events do
+    resources :tickets, only: [:create]
+    resource :ticket, only: [:destroy]
+    member do
+      get :ticket_users
+    end
+  end
+
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
 

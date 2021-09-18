@@ -1,8 +1,8 @@
-<% if @user.id == current_user.id %>
+<% if @event.user_id == current_user.id %>
 
 <h2 class="sgin_up text-center">イベント編集</h2>
 
-  <%= form_with(model:[@user, @event], method: :event) do |f| %>
+  <%= form_with(model:[@event], method: :patch) do |f| %>
 
     <div class="form-group text-center field mt-5">
       <%= f.label :image, 'プロフィール画像' %><br>

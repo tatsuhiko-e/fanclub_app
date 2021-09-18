@@ -1,24 +1,21 @@
-  <% if @event.image.nil? %>
-    <div class="text-center"><%= image_tag(@event.user.image) %></div>
-  <% else %>
-    <div class='text-center'><%= image_tag(@event.image.variant(gravity: :center, resize:"640x640^").processed, class: "img-fluid") %></div>
+  <div class='text-center'><%= image_tag(@event.image.variant(gravity: :center, resize:"640x640^").processed, class: "img-fluid") %></div>
+
+  <% if current_user.id == @event.user_id %> 
+    <%= link_to 'このメッセージを削除する', event_path(@event), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+    <%= link_to 'このメッセージを編集する', edit_event_path(@event) %>
   <% end %>
-  <div class="text-center event_title_show"><%= @event.title %></div>
 
-  
+
   <ul class="ticketuser-list text-center">
-    <% @event.ticketed_users.first(6).each do |user| %>
-      <li><%= link_to image_tag(user.image.variant(combine_options:{gravity: :center, resize:"100x100^", crop:"100x100+0+0"}).processed, class: "ticket-image"), user_path(user) %></li>
-    <% end %>
+  <li class="text-center event_title_show"><%= @event.title %></li>
 
-  <li id="tickets_buttons_<% @event.id %>" class="tickets">
-    <%= render partial: "tickets/ticket", locals: {event: @event} %>
-  </li>
-
+    <li id="tickets_buttons_<% @event.id %>" class="tickets">
+      <%= render partial: "tickets/ticket", locals: {event: @event} %> 
+    </li>
   </ul>
-
-
- 
+  <div class="ticket_index">
+    <%= link_to "もっと見る", ticket_users_event_path unless current_user %>
+  </div>
   
   <hr>
   <a class="event">イベント会場</a>
@@ -35,9 +32,4 @@
   <div class="text-center">
 
   
-  <% if !current_user.id == @event.user.id %> 
-    <div class="text-right">
-    <%= link_to 'このメッセージを削除する', user_event_path(@user, @event), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
-    <%= link_to 'このメッセージを編集する', edit_user_event_path(@user, @event) %>
-    </div>
-  <% end %>
+

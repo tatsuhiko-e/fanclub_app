@@ -1,5 +1,9 @@
-<% if current_user.already_liked?(@post) %>
-  <%= button_to 'いいね♡', user_post_like_path(@user, @post), class: 'btn btn-warning', method: :delete, remote: true %>
-<% else %>
-  <%= button_to 'いいね♡', user_post_likes_path(@user, @post), class: 'btn btn-outline-dark', remote: true %>
+<% if user_signed_in? %>
+  <div class="like-button">
+  <% if current_user.already_liked?(post) %>
+    <li><%= button_to "♡ #{ post.likes.count }", post_like_path(post), class: 'btn btn-warning like-button-heart ', method: :delete, remote: true %></li>
+  <% else %>
+    <li><%= button_to "♡ #{ post.likes.count }", post_likes_path(post), class: 'btn btn-outline-warning like-button-heart', remote: true %></li>
+  <% end %>
+  </div>
 <% end %>

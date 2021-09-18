@@ -1,6 +1,14 @@
 <h2 class="sgin_up text-center">ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+<% if alert %>
+   <p><%= alert %></p>
+<% end %>
+
   <div class="field text-center ">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>

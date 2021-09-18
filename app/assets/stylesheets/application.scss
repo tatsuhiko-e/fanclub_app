@@ -14,8 +14,7 @@
  *= require_tree .
  *= require_self
  */
- @import "slick-theme";
- @import "slick"; 
+ 
 
  html, body {
   font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
@@ -30,7 +29,7 @@ body {
 }
 
 .container{
-  background-color: #f1f1f1;
+  background-color: #fcfaff;
   overflow: hidden;
   width: 1200px;
   margin-left: auto;
@@ -43,8 +42,20 @@ body {
   margin-top: 10px;
 }
 
+.nav-title{
+  color: #f1f1f1;
+}
+
+.navbar-nav li{
+  color: #f1f1f1;
+}
+
 .navbar{
   height: 90px;
+}
+
+.sginup-btn{
+  color: #741c9c;
 }
 
   /*検索フォーム*/
@@ -75,22 +86,34 @@ body {
   }
 
 #sbtn3{
+  color: #ffffff;
   height:50px;
   position:relative; 
   left:0px;/*アイコン左右の位置調整*/
-  top:0px;
+  top:-8px;
   background:none;
-  color: #741c9c;
   border:none;
   font-size:20px;/*アイコンサイズ*/
 }
 
+.fa-envelope{
+  color: #f1f1f1;
+}
+
+.fa-bell{
+  color: #f1f1f1;
+}
+
+.fa-user-circle{
+  color: #f1f1f1;
+}
+
 #sbtn6{
   position:relative; 
-  left:-33px;/*アイコン左右の位置調整*/
-  top:3px;
+  left:-53px;/*アイコン左右の位置調整*/
+  top:-5px;
   background:none;
-  color: #741c9c;
+  color: #ffffff;
   border:none;
   font-size:17px;/*アイコンサイズ*/
 }
@@ -98,10 +121,10 @@ body {
 #sbtn7{
   
   position:relative; 
-  left:-15px;/*アイコン左右の位置調整*/
-  top:3px;
+  left:-25px;/*アイコン左右の位置調整*/
+  top:-5px;
   background:none;
-  color: #741c9c;
+  color: #ffffff;
   border:none;
   font-size:17px;/*アイコンサイズ*/
 }
@@ -126,12 +149,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0;
-    
   }
   
-  
-  
-
   .swiper-container {
     width: 100%;
   }
@@ -143,8 +162,4 @@ body {
 
 .month1 {
   font-size: 60px;
-}
-
-.nav-item{
-  
 }

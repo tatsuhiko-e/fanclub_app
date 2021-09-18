@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include JpPrefecture
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :omniauthable
-
   has_one_attached :image
   has_many :members, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -11,13 +12,13 @@ class User < ApplicationRecord
   has_many :videos, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
-  has_many :relationships
+  has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_of_relationship, source: :user
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_many :tickets
+  has_many :tickets, dependent: :destroy
   has_many :ticket_events, through: :tickets, source: :event
 
   def follow(other_user)
@@ -92,7 +93,7 @@ class User < ApplicationRecord
     沖縄県:47
   }
 
-  enum gender: { 男: 0, 女: 1}
+  enum gender: { 男: 0, 女: 1, 男女: 3}
 
 
   private

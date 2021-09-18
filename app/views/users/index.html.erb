@@ -3,23 +3,22 @@
 <div> 
   <%= search_form_for @user_search, url: users_path do |f| %>
     <%= f.search_field :name_cont, class: 'form-control me-sm-2', id: "submit-form2"%>
+
+    <% User.genders.keys.each_with_index do |key, i| %>
+      <%= f.check_box :gender_eq_any, {multiple: true}, i, nil %>
+      <%= key %>
+    <% end %>
+
+    <% User.areas.keys.each_with_index do |key, i| %>
+      <% if i != 0 %>
+      <%= f.check_box :area_eq_any, {multiple: true}, i, nil %>
+      <%= key %>
+      <% end %>
+    <% end %>
+   
     <%= f.button :type => "submit", id: 'submit-btn2' do %>
       <i class='fas fa-search'></i>
     <% end %>
-  <% end %>
-</div>
-
-<div>
-  <%= search_form_for @user_search, url: users_path do |f| %>
-
-    <%= f.label :男性 %>
-    <%= f.radio_button :gender_eq,0, {:checked => true} %>
-    <%= f.label :女性 %>
-    <%= f.radio_button :gender_eq,1%>
-
-    <%= f.submit class: 'btn btn-primary' %>
-
-
   <% end %>
 </div>
 

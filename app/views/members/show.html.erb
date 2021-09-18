@@ -15,8 +15,8 @@
     </ul>
 
   </ul>
-  <% if current_user %>
-    <%= link_to 'このメッセージを削除する', user_member_path(@user, @member), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
-    <%= link_to 'このメッセージを編集する', edit_user_member_path(@user, @member) %>
+  <% if current_user.id == @member.user_id %>
+    <%= link_to '削除', member_path(@member), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+    <%= link_to '編集', edit_member_path(@member) %>
   <% end %>
 </div>

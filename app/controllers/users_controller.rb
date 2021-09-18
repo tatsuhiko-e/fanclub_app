@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit]
   before_action :ensure_correct_user, only: [:destroy]
-  
 
   def index
     @users = User.where(admin: true)
@@ -10,27 +10,32 @@ class UsersController < ApplicationController
   end
 
   def show
+    if !@user.image.attached?
+      redirect_to edit_user_path(@user) 
+    end
     @events = @user.events.order(start_time: :desc).limit(2)
     @posts = @user.posts.order(created_at: :desc).limit(2)
     
     
     # DM
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
+    if user_signed_in?
+      @currentUserEntry=Entry.where(user_id: current_user.id)
+      @userEntry=Entry.where(user_id: @user.id)
+      if @user.id == current_user.id
+      else
+        @currentUserEntry.each do |cu|
+          @userEntry.each do |u|
+            if cu.room_id == u.room_id then
+              @isRoom = true
+              @roomId = cu.room_id
+            end
           end
         end
-      end
-      if @isRoom
-      else
-        @room = Room.new
-        @entry = Entry.new
+        if @isRoom
+        else
+          @room = Room.new
+          @entry = Entry.new
+        end
       end
     end
   end
@@ -50,6 +55,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :profile, :area, :gender, :age, :image)
   end
@@ -59,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    if @user_id != current_user.id
+    if @user.id != current_user.id
       redirect_to root_path
     end
   end

@@ -1,8 +1,8 @@
-<% if @user.id == current_user.id %>
+<% if @video.user_id == current_user.id %>
 
   <h2 class="sgin_up text-center">編集</h2>
 
-  <%= form_with(model:[@user, @video], method: :patch) do |f| %>
+  <%= form_with(model:[@video], method: :patch) do |f| %>
     <div class="form-group text-center field mt-5">
       <%= f.label :title, 'タイトル' %><br>
       <%= f.text_field :title, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>

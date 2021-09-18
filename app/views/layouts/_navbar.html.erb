@@ -1,6 +1,5 @@
-
-  <nav class="navbar navbar-expand-sm navbar-ligth border-bottom border-3 border-primary" style="background-color:#f1f1f1; ">
-    <div class="navbar-brand"><%= link_to "Navbar", root_path %></div>
+  <nav class="navbar navbar-expand-sm navbar-dark  border-bottom border-3 border-white" style="background-color:#741c9c; ">
+    <div class="navbar-brand"><%= link_to "Navbar", root_path, class: "nav-title" %></div>
     <!-- 横幅が狭い時に出るハンバーガーボタン -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -10,22 +9,20 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-        <li class="nav-item"><%= link_to '探す', root_path, class: 'btn btn-outline-primary mr-1' %></li>
-          <li  class="nav-item">
           <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></li>
           <li id="sbtn6" class="nav-item">
             <%= link_to user_path(current_user.id) do %>
-              <i class="far fa-envelope fa-2x"></i>
+              <i class="far fa-envelope fa-3x"></i>
             <% end %>
           </li>
           <li id="sbtn7" class="nav-item">
             <%= link_to user_path(current_user.id) do %>
-              <i class="far fa-bell fa-2x"></i>
+              <i class="far fa-bell fa-3x"></i>
             <% end %>
           </li>
           <li id="sbtn3" class="nav-item">
-            <%= link_to user_path(current_user.id) do %>
-              <i class="fas fa-user-circle fa-2x"></i>
+            <%= link_to user_path(current_user) do %>
+              <i class="fas fa-user-circle fa-3x"></i>
             <% end %>
           </li>
         <% else %>
@@ -35,11 +32,9 @@
             <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
           </form>
         </li>
-          <li class="nav-item"><%= link_to '新規登録', new_user_session_path, class: 'btn btn-primary mr-3' %></li>
-          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-primary ' %></li>
+          <li class="nav-item"><%= link_to '新規登録', new_user_session_path, class: 'btn btn-light mr-3 sginup-btn' %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-light' %></li>
         <% end %>
-  
-      
       </ul>
     </div>
   </nav>

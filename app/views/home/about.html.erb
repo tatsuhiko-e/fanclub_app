@@ -5,7 +5,7 @@
     <div class="swiper-wrapper">
     <!-- 各スライド -->
     <% @users.last(6).each do |user| %>
-      <%= link_to  user_path(user),class:"swiper-slide"  do %>
+      <%= link_to user_path(user),class:"swiper-slide" do %>
         <div class="swiper-img text-center"><%= image_tag(user.image.variant(resize:"1200x600").processed, class: "") %></div>
       <% end %>
     <% end %>
@@ -43,62 +43,55 @@
   <h1 class="font2">（タイトル）へようこそ</h1>
 </div>
 
-<div class="text-center">
-  <h2 class="font3">何かキャッツフレーズを入れたいな</h2>
+<div class="text-center mb-3">
+  <h2 class="font3">あなたの日常に一つの楽しみを</h2>
+  <h2 class="font3">頑張るアイドルたちを応援しよう</h2>
+  <%= link_to 'ファンクラブを探す', users_path, class: "btn-flat-vertical-border mt-3" %>
 </div>
 
-
-<ul class="button1">
-  <li>
-    <div class="text-center">
-       <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-flat-vertical-border mt-3" %>
-    </div> 
-  </li>
-  <li>
-    <div class="text-center">
-       <%= link_to 'ファンクラブを探す', users_path, class: "btn-flat-vertical-border mt-3" %>
-    </div> 
-  </li>
-</ul>
-
+<div class="text-center mt-5">
+  <h2 class="font3">ファンクラブを作る方はこちら</h2>
+  <h2 class="font3">簡単無料でファンクラブを作ろう</h2>
+  <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-flat-vertical-border mt-3" %>
+</div> 
 
 <h2 class="font4 ">新規ファンクラブ</h2>
-  <div class="member1">
-    <% @users.last(6).each do |user| %>
-      <section class="card3 <%= ' user-woman' if user.gender == "女" %>">
-        <%= link_to user_path(user), class: " text-dark" do %>
-        <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
-        <div class="card-content3">
-          <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
-          <ul class="card-list3">
-            <li class="card-text3"><%= user.profile.truncate(50) %></li>
-            <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
-        </div>
-        <% end %>
-      </section>
-  
-    <% end %>
+  <div class="new-fanclub-container">
+    <div class="member1">
+      <% @users.last(6).each do |user| %>
+        <section class="card3 <%= ' user-woman' if user.gender == "女" %>">
+          <%= link_to user_path(user), class: " text-dark" do %>
+            <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
+            <div class="card-content3">
+              <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
+              <ul class="card-list3">
+                <li class="card-text3"><%= user.profile.truncate(50) %></li>
+                <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
+            </div>
+          <% end %>
+        </section>
+      <% end %>
+    </div>
   </div>
-
 
 <% if user_signed_in? %>
 <h2 class="font4 ">近くのアーティスト</h2>
-  <div class="member1">
-    <% @area_user.last(6).each do |user| %>
-      <section class="card3 <%= ' user-woman' if user.gender == "女" %>">
-        <%= link_to user_path(user), class: " text-dark" do %>
-        <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
-        <div class="card-content3">
-          <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
-     
-          <ul class="card-list3">
-            <li class="card-text3"><%= user.profile.truncate(50) %></li>
-            <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
-        </div>
-        <% end %>
-      </section>
-    <% end %>
+  <div class="near-fanclub-container">
+    <div class="member1">
+      <% @area_user.last(6).each do |user| %>
+        <section class="card3 <%= ' user-woman' if user.gender == "女" %>">
+          <%= link_to user_path(user), class: " text-dark" do %>
+          <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
+          <div class="card-content3">
+            <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
+            <ul class="card-list3">
+              <li class="card-text3"><%= user.profile.truncate(50) %></li>
+              <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
+          </div>
+          <% end %>
+        </section>
+      <% end %>
+    </div>
   </div>
-</div>
 <% end %>
 
