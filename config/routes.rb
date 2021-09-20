@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :posts
+      get :events
+      get :videos
     end
-    resources :posts, only: [:index]
-    resources :events, only: [:index]
-    resources :videos, only: [:index] 
   end
 
   resources :members

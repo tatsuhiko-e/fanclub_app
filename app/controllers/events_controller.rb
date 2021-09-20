@@ -5,9 +5,7 @@ class EventsController < ApplicationController
   before_action :redirect_to_root, only: [:new]
 
   def index
-    @user = User.find_by(id: params[:user_id])
-    @events = @user.events.order(start_time: :desc)
-    @next_events = @user.events.where("start_time > ?",Date.today)
+
   end
 
   def show
@@ -41,7 +39,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to user_events_path(@event.user_id)
+    redirect_to events_user_path(@event.user_id)
   end
 
   def ticket_users

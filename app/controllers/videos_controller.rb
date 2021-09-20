@@ -6,8 +6,6 @@ class VideosController < ApplicationController
   
   
   def index
-    @user = User.find_by(id: params[:user_id])
-    @videos = @user.videos
   end
 
   def show
@@ -48,7 +46,7 @@ class VideosController < ApplicationController
 
   def destroy
     @video.destroy
-    redirect_to user_videos_path(@video.user_id)
+    redirect_to videos_user_path(@video.user_id)
   end
 
 

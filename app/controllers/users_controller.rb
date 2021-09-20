@@ -54,6 +54,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def posts
+    @user = User.find_by(id: params[:id])
+    @search = @user.posts.ransack(params[:q])
+    @results = @search.result.page(params[:page]).per(6)
+  end
+
+  def events
+    @user = User.find_by(id: params[:id])
+    @events = @user.events.order(start_time: :desc)
+    @next_event = @user.events.find_by("start_time > ?",Date.today)
+  end
+
+  def videos
+    @user = User.find_by(id: params[:id])
+    @videos = @user.videos
+  end
+
   private
 
   def user_params

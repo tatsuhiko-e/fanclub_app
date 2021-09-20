@@ -1,37 +1,34 @@
-<% if @event.user_id == current_user.id %>
-
 <h2 class="sgin_up text-center">イベント編集</h2>
 
-  <%= form_with(model:[@event], method: :patch) do |f| %>
+<%= form_with(model:[@event], method: :patch) do |f| %>
 
-    <div class="form-group text-center field mt-5">
-      <%= f.label :image, 'プロフィール画像' %><br>
-      <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;" %>
-    <div>
+  <div class="form-group text-center field mt-5">
+    <%= f.label :image, 'プロフィール画像' %><br>
+    <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;" %>
+  <div>
 
-    <div class="time text-center mt-3">
-      <%= f.label :start_time, "開始時間" %><br>
-      <%= f.datetime_select :start_time, class:"form-select", id: "exampleInputEmail1", style: "width: 300px;" %>
-    </div>
+  <div class="time text-center mt-3">
+    <%= f.label :start_time, "開始時間" %><br>
+    <%= f.datetime_select :start_time, class:"form-select", id: "exampleInputEmail1", style: "width: 300px;" %>
+  </div>
 
-    <div class="form-group text-center">
-      <%= f.label :title, 'タイトル' %><br>
-      <%= f.text_field :title, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
-    </div>
+  <div class="form-group text-center">
+    <%= f.label :title, 'タイトル' %><br>
+    <%= f.text_field :title, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
+  </div>
 
 
-    <div class="form-group text-center">
-      <%= f.label :place, '会場' %><br>
-      <%= f.text_field :place, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
-    </div>
+  <div class="form-group text-center">
+    <%= f.label :place, '会場' %><br>
+    <%= f.text_field :place, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
+  </div>
 
-    <div class="form-group text-center ">
-      <%= f.label :body, '備考欄' %><br>
-      <%= f.text_area :body, class: "form-control event-bodyform", id: "exampleInputEmail1", style: "width: 600px; height: 400px;" %>
-    </div>
-   
-    <div class="text-center">
-      <%= f.submit "投稿" %>
-    </div>
-  <% end %>
+  <div class="form-group text-center ">
+    <%= f.label :body, '備考欄' %><br>
+    <%= f.text_area :body, class: "form-control event-bodyform", id: "exampleInputEmail1", style: "width: 600px; height: 400px;" %>
+  </div>
+  
+  <div class="text-center">
+    <%= f.submit "投稿" %>
+  </div>
 <% end %>

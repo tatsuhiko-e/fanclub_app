@@ -1,19 +1,27 @@
 <div class="prfile text-center">
-<h1 class="idol_name"><%= @member.name %></h1>
+  <h1 class="idol_name"><%= @member.name %></h1>
   <ul class="member_show">
     <li><%= image_tag @member.image.variant(combine_options:{gravity: :center, resize:"600x1200^", crop:"600x1200+0+0"}).processed %></li>
     <li class="text-center">
-    <div class="member-font1">自己紹介</div>  
-    <h2 class="idol_profile mt-3"><%= @member.profile %></h2>
-   
-
-    <ul class="snsbtniti mt-5">
-      <li>
-        <a href=<%"https://twitter.com/#{@member.twitter}" %> class="flowbtn fl_tw1"><i class="fab fa-twitter fa-2x"></i><div>Twitter</div></a>
-      </li>
-      <li><a href="インスタのプロフィールURL" class="flowbtn insta_btn1"><i class="fab fa-instagram fa-2x"></i><div>Instagram</div></a></li>
-    </ul>
-
+      <div class="member-font1">自己紹介</div>  
+      <h2 class="idol_profile mt-3"><%= @member.profile %></h2>
+      <ul class="snsbtn mt-5">
+        <% unless @member.twitter.blank? %>
+          <li>
+            <%= link_to @member.twitter, target: :_blank do %>
+              <i class="fab fa-twitter-square fa-3x"></i>
+            <% end %> 
+          </li>
+        <% end %>   
+        <% unless @member.instagram.blank? %>
+          <li>
+            <%= link_to @member.instagram, target: :_blank do %>
+              <i class="fab fa-instagram fa-3x"></i>
+            <% end %>
+          </li>  
+        <% end %>
+      </ul>
+    </li>
   </ul>
   <% if current_user.id == @member.user_id %>
     <%= link_to '削除', member_path(@member), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

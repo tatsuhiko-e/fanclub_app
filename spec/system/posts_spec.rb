@@ -15,7 +15,7 @@ RSpec.describe 'ポスト投稿・編集・削除機能', type: :system do
 
       before do
         sign_in_as(login_user)
-        visit user_posts_path(login_user)
+        visit posts_user_path(login_user)
       end
    
       it 'ファンクラブが表示される' do
@@ -28,7 +28,7 @@ RSpec.describe 'ポスト投稿・編集・削除機能', type: :system do
 
       before do  
         sign_in_as(login_user)
-        visit user_posts_path(login_user)
+        visit posts_user_path(login_user)
       end
 
       it 'ファンクラブが表示されない' do

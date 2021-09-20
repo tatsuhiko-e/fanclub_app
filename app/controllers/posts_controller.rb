@@ -5,9 +5,7 @@ class PostsController < ApplicationController
   before_action :redirect_to_root, only: [:new]
   
   def index
-    @user = User.find_by(id: params[:user_id])
-    @search = @user.posts.ransack(params[:q])
-    @results = @search.result.page(params[:page]).per(6)
+
   end
 
   def show
@@ -42,7 +40,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to user_posts_path(@post.user_id)
+    redirect_to posts_user_path(@post.user_id)
   end
 
   private

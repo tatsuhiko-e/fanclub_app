@@ -75,7 +75,6 @@ class User < ApplicationRecord
       user.skip_confirmation!
       user.save
     end
-
     user
   end
 
@@ -93,7 +92,7 @@ class User < ApplicationRecord
     沖縄県:47
   }
 
-  enum gender: { 男: 0, 女: 1, 男女: 3}
+  enum gender: { 男性: 0, 女性: 1, 男女グループ: 3}
 
 
   private

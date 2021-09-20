@@ -10,7 +10,7 @@ RSpec.describe 'video投稿・編集・削除機能', type: :system do
       let(:login_user) { user_a }
       before do
         sign_in_as(login_user)
-        visit user_videos_path(user_a)
+        visit videos_user_path(user_a)
       end
 
       it '投稿ボタンとイベント一覧が表示される' do      
@@ -23,7 +23,7 @@ RSpec.describe 'video投稿・編集・削除機能', type: :system do
       let(:login_user) { user_b }
       before do
         sign_in_as(login_user)
-        visit user_videos_path(user_a)
+        visit videos_user_path(user_a)
       end
     
       it '投稿ボタンが表示されない' do
@@ -33,7 +33,7 @@ RSpec.describe 'video投稿・編集・削除機能', type: :system do
 
     context 'ログインしていないとき' do
       before do
-        visit user_events_path(user_a)
+        visit events_user_path(user_a)
       end 
 
       it '投稿ボタンが表示されない' do
