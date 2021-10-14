@@ -1,0 +1,15 @@
+
+<% @results.reverse_each do |event| %>
+  <%= link_to event_path(event), class: "" do %>
+    <div class="card4">
+      <div class=""><%= image_tag(event.image.variant(gravity: :center, resize: '550x400' ,crop: "500x300+0+0").processed, class: " card-img5") %></div>
+      <div>
+        <div class="card-event-title mt-3"><%= event.title %></div><br>
+        <a class="card-event-text"><%= event.start_time.strftime("%m月%d日 %H:%M") %></a><br>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<div class="text-center">
+  <%= paginate @results %>
+</div>

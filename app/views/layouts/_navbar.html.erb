@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-sm navbar-dark  border-bottom border-3 border-white" style="background-color:#741c9c; ">
+  <nav class="navbar <%= " navbar-#{@user.theme}" if !@user.nil? %> navbar-expand-sm navbar-dark  border-bottom border-3 border-white" style="<%= 'background-color: #741c9c;' if @user.nil? || @user.theme == 1 %>">
     <div class="navbar-brand"><%= link_to "Navbar", root_path, class: "nav-title" %></div>
     <!-- 横幅が狭い時に出るハンバーガーボタン -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">

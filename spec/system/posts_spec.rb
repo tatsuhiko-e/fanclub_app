@@ -131,7 +131,7 @@ RSpec.describe 'ポスト投稿・編集・削除機能', type: :system do
         visit post_path(post_a)
         click_link 'このメッセージを編集する'
         fill_in 'post[title]', with: '編集後'
-        click_button '更新する'
+        click_button ''
       end
   
       it '削除・編集リンクが表示される' do

@@ -65,8 +65,23 @@
 }
 
 .next-event{
- 
   font-size: 60px;
   border-bottom: solid;
   border-color: #741c9c;
+}
+
+.calendar-event{
+  font-size: 30px;
+  position: relative;
+  left: 10px;
+}
+
+.card-event-title{
+  font-size: 40px;
+  margin-left: 10px;
+}
+
+.card-event-text{
+  font-size: 30px;
+  margin-left: 30px;
 }

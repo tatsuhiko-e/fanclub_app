@@ -1,7 +1,9 @@
 <h2 class="sgin_up text-center">画像投稿</h2>
 
 <% if current_user.admin? %>
-  <%= form_with(model:[@post], method: :post) do |f| %>
+  <%= form_with(model:[@post], method: :post, local: true) do |f| %>
+  
+    <%= render 'layouts/error_messages', model: f.object %>
     
     <div class="text-center mt-5">
       <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;"  %>

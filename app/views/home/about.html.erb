@@ -46,13 +46,16 @@
 <div class="text-center mb-3">
   <h2 class="font3">あなたの日常に一つの楽しみを</h2>
   <h2 class="font3">頑張るアイドルたちを応援しよう</h2>
-  <%= link_to 'ファンクラブを探す', users_path, class: "btn-flat-vertical-border mt-3" %>
+  <div class="search-genre">
+    <%= link_to 'EVENT', events_path, class: "btn-circle-stitch" %>
+    <%= link_to 'FANCLUB', users_path, class: "btn-circle-stitch-center mx-5" %>
+    <%= link_to 'PHOTO', posts_path, class: "btn-circle-stitch" %>
 </div>
 
 <div class="text-center mt-5">
   <h2 class="font3">ファンクラブを作る方はこちら</h2>
   <h2 class="font3">簡単無料でファンクラブを作ろう</h2>
-  <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-flat-vertical-border mt-3" %>
+  <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-stitch" %>
 </div> 
 
 <h2 class="font4 ">新規ファンクラブ</h2>
@@ -75,7 +78,7 @@
   </div>
 
 <% if user_signed_in? %>
-<h2 class="font4 ">近くのアーティスト</h2>
+<h2 class="font4 ">近くのアイドル</h2>
   <div class="near-fanclub-container">
     <div class="member1">
       <% @area_user.last(6).each do |user| %>

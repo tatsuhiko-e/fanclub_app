@@ -1,6 +1,8 @@
 <h2 class="sgin_up text-center">イベント編集</h2>
 
-<%= form_with(model:[@event], method: :patch) do |f| %>
+<%= form_with(model:[@event], method: :patch, local: true) do |f| %>
+
+<%= render 'layouts/error_messages', model: f.object %>
 
   <div class="form-group text-center field mt-5">
     <%= f.label :image, 'プロフィール画像' %><br>

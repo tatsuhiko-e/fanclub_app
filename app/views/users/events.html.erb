@@ -1,0 +1,47 @@
+<div class="user-show-container<%= @user.theme %>">
+  <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+  <ul class='table-ul<%= @user.theme %> pl-0'>
+    <li>
+      <%= link_to "プロフィール", @user, class: "" %>
+    </li>
+    <li>
+      <%= link_to "ブログ", posts_user_path(@user), class: "" %>
+    </li>
+    <li class="current">
+      <%= link_to "スケジュール", events_user_path(@user), class: "" %>
+    </li>
+    <li>
+      <%= link_to "動画", videos_user_path(@user), class: "" %>
+    </li> 
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+  </ul>
+  <% if user_signed_in? && @user.id == current_user.id %>
+    <%= link_to 'イベント投稿', new_event_path %>
+  <% end %>
+
+  <%= month_calendar events: @events do |date, events| %>
+    <%= date.day %>
+    <% events.each do |event| %>
+      <div>
+        <%= link_to event.title, event_path(event) %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if !@next_event.nil? %>
+    <div class="next-event-container">
+      <div class="next-event">次のイベント</div>
+      <div class='text-center mt-3'><%= image_tag(@next_event.image, class: "img-fluid") %></div>
+      <div class="event_title_show text-center"><%= @next_event.title %></div>
+      <hr>
+      <a class="event">イベント会場</a>
+      <a class="text-center event_area_show"><%= @next_event.place %></a>
+      <hr>
+      <a class="event_time">開始時間</a>
+      <a class="text-center event_starttime"><%= @next_event.start_time.strftime("%m月%d日 %H:%M") %></a>
+      <hr>
+    </div>
+  <% end %>
+</div>

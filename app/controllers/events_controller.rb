@@ -1,11 +1,16 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :redirect_to_root, only: [:new]
   before_action :set_event, only: [:show, :destroy, :edit, :update, :ticket_users]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  before_action :redirect_to_root, only: [:new]
+  skip_before_action :verify_authenticity_token
 
   def index
-
+    @event_search = Event.ransack(params[:q])
+    params[:q] = {"user_gender_eq_any"=>["0", "1", "2"]} if params[:q].nil?
+    @results = @event_search.result.page(params[:page]).per(6)
+    result_events = @results.where("start_time > ?",Date.today)
+    @order_event = result_events.order(start_time: :desc)
   end
 
   def show
@@ -22,7 +27,7 @@ class EventsController < ApplicationController
       flash[:success] = 'イベントを投稿しました。'
       redirect_to event_path(@event)
     else
-      render :new
+      render "new"
     end
   end
 
@@ -44,6 +49,13 @@ class EventsController < ApplicationController
 
   def ticket_users
     @users = @event.ticketed_users.all
+  end
+
+  def day
+    @events = Event.where("DATE(start_time) == '#{params[:id].to_date}'").page(params[:page]).per(6)
+    @event_search = @events.ransack(params[:q])
+    @results = @event_search.result.page(params[:page]).per(6)
+    result_events = @results.where("start_time > ?",Date.today)
   end
 
   private

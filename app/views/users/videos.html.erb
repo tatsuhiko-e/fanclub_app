@@ -1,0 +1,35 @@
+  <div class="user-show-container<%= @user.theme %>">
+    <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+    <ul class='table-ul<%= @user.theme %> pl-0'>
+    <li>
+      <%= link_to "プロフィール", @user, class: "" %>
+    </li>
+    <li>
+      <%= link_to "ブログ", posts_user_path(@user), class: "" %>
+    </li>
+    <li>
+      <%= link_to "スケジュール", events_user_path(@user), class: "" %>
+    </li>
+    <li class="current">
+      <%= link_to "動画", videos_user_path(@user), class: "" %>
+    </li> 
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+  </ul>
+
+  <% if user_signed_in? && @user.id == current_user.id %>
+    <div class="text-right"><%= link_to "ムービーを追加する", new_video_path(@video) %></div>
+  <% end %>
+  
+  <% @user.videos.each do |video| %>
+    <div class=" video-title mt-5"><%= link_to video.title, video_path(video) %></div>
+    <div class="text-center video-content">
+      <iframe width="1000" height="563" src="https://www.youtube.com/embed/<%= video.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <ul class="video-item">
+      <li><%= video.created_at.strftime('%Y/%m/%d') %></li>
+    </ul>
+    <hr>
+  <% end %>
+</div>

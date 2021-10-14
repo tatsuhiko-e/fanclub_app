@@ -1,4 +1,9 @@
-<%= form_with(model:[@member], method: :patch) do |f| %>
+<h2 class="sgin_up text-center">メンバーの編集</h2>
+
+<%= form_with(model:[@member], method: :patch, local: true) do |f| %>
+
+  <%= render 'layouts/error_messages', model: f.object %>
+
   <div class="form-group text-center field mt-4">
     <%= f.label :image, 'プロフィール画像' %><br>
     <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;" %>

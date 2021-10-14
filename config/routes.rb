@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # get 'events/index'
   # get 'events/new'
   # get 'events/create'
@@ -43,6 +45,7 @@ Rails.application.routes.draw do
     resource :ticket, only: [:destroy]
     member do
       get :ticket_users
+      get :day
     end
   end
 

@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :tickets, dependent: :destroy
   has_many :ticket_events, through: :tickets, source: :event
 
+
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -92,7 +93,7 @@ class User < ApplicationRecord
     沖縄県:47
   }
 
-  enum gender: { 男性: 0, 女性: 1, 男女グループ: 3}
+  enum gender: { 男性: 0, 女性: 1, 男女グループ: 2 }
 
 
   private

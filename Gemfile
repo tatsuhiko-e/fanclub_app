@@ -83,3 +83,6 @@ gem 'ransack'
 gem 'jp_prefecture'
 gem 'kaminari'
 gem 'jquery-rails'
+
+gem 'devise-i18n'
+gem 'activeadmin'

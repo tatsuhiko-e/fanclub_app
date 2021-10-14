@@ -5,7 +5,9 @@ class PostsController < ApplicationController
   before_action :redirect_to_root, only: [:new]
   
   def index
-
+    posts = Post.all
+    @post_search = posts.ransack(params[:q])
+    @post_results = @post_search.result.page(params[:page]).per(8)
   end
 
   def show

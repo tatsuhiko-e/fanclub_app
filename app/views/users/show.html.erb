@@ -1,75 +1,5 @@
 <% if @user.admin? %>
-  <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
-  <ul class="table-ul pl-0">
-    <li class="current">
-      <%= link_to "プロフィール", @user, class: "" %>
-    </li>
-    <li>
-      <%= link_to "ブログ", posts_user_path(@user), class: "" %>
-    </li>
-    <li>
-      <%= link_to "スケジュール", events_user_path(@user), class: "" %>
-    </li>
-    <li>
-      <%= link_to "動画", videos_user_path(@user), class: "" %>
-    </li> 
-    <li>
-      <%= link_to "Contact", "/", class: "" %>
-    </li> 
-  </ul>
-	<div >
-    <h1 class="user-name text-center"><%= @user.name %></h1>
-  </div>
-  <div class="follow_button text-right" id="follows_buttons_<% @user.id %>">
-    <%= render 'relationships/follow_button', user: @user %>
-  </div>
-	<p class="profile text-center"><%= @user.profile %></p>
-
-  <!- メンバー一覧 ->
-
-  <h2 class="font7">member</h2>  
-
-  <% if user_signed_in? && @user.id == current_user.id %>
-    <div class="text-right"><%= link_to "メンバーを追加する", new_member_path(@user) %></div>
-  <% end %>
-  <div class="member">
-    <% @user.members.each do |member| %>
-      <section class="card1">
-      <%= link_to member_path(member), class: "" do %>
-        <div class="card-title1 text-center"><%= image_tag(member.image.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0").processed, class: "img-fluid card-img1") %></div>
-        <div class="card-content1">
-          <h1 class="card-title1"><%= member.name %></h1>
-        </div>
-      <% end %>
-      </section>      
-    <% end %>
-  </div>
-  <h2 class="font8">近日のイベント</h2>
-  <% @events.each do |event| %>
-    <section class="card4">
-      <%= link_to event_path(event), class: "" do %>
-        <div class=""><%= image_tag(event.image.variant(gravity: :center, resize: '550x400' ,crop: "500x300+0+0").processed, class: "card-img5 img-fluid") %></div>
-        <div>
-          <a class="card-title4"><%= event.title %></a><br>
-          <a class="card-text4"><%= event.start_time.strftime("%m月%d日") %></a><br>
-          <a class="card-text4"><%= event.place %></a>
-        </div>
-      </section>
-    <% end %>
-  <% end %>
-  <div class="all_look text-right"><%= link_to "もっと見る", events_user_path(@user) %></div>
-  <h2 class="font8">最近の投稿</h2>
-  <% @posts.each do |post| %>
-    <section class="card4">
-      <%= link_to post_path(post.id), class: "" do %>
-        <div class=""><%= image_tag(post.image.variant(gravity: :center, resize: '550x400' ,crop: "500x300+0+0").processed, class: "card-img5 img-fluid") %></div>
-        <div>
-          <a class="card-title4"><%= post.title %></a><br>
-        </div>
-      </section>
-    <% end %>
-  <% end %>
-  <div class="all_look text-right"><%= link_to "もっと見る", posts_user_path(@user) %></div>
+  
 
 <% else %>
 
@@ -103,11 +33,11 @@
         </ul>
         <div class="name-font2"><%= @user.profile unless @user.profile.nil? %><div>
         <div class="name-font2 mt-3"><%= "#{@user.age}歳" unless @user.age.nil? %><div> 
-        <div class="name-font2"><%= "#{@user.gender}性" unless @user.gender.nil? %><div>
+        <div class="name-font2"><%= "#{@user.gender}" unless @user.gender.nil? %><div>
         <div class="name-font2"><%= "#{@user.area}" unless @user.area.nil? %><div>
     </div>
     <% if current_user.id == @user.id %>
-    <div class="container bg-white mt-5">
+      <div class="container bg-white mt-5">
         <ul class="nav nav-tabs mb-3 nav-justified" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ファンクラブ</a>
@@ -133,7 +63,7 @@
               <% end %>
             <% end %>
           </div>
-         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container gallery text-center" style="">
               <% current_user.like_posts.reverse_each do |post| %>
                 <%= link_to image_tag(post.image.variant(combine_options:{gravity: :center, resize:"585x585^", crop:"585x585+0+0"}).processed, class: "post-image"), post_path(post) %>
@@ -156,6 +86,6 @@
             <% end %>        
           </div>
         </div>
-    </div>
+      </div>
     <% end %>
 <% end %>

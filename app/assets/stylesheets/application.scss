@@ -12,16 +12,33 @@
  *
  *= require simple_calendar
  *= require_tree .
+ *= require_directory .
  *= require_self
  */
  
 
  html, body {
   font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  
 }
 
 body {
     min-width: 1200px;
+    text-decoration: none;
+}
+
+html{
+  text-decoration: none;
+}
+
+.navbar-0{
+  background-color: #741c9c;
+}
+
+footer {
+  margin-top: 80px;
+  height: 100px;
+  background-color: #741c9c;
 }
 
 .pagination {
@@ -30,7 +47,7 @@ body {
 
 .container{
   background-color: #fcfaff;
-  overflow: hidden;
+  
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -162,4 +179,33 @@ body {
 
 .month1 {
   font-size: 60px;
+}
+
+//smple calendar
+.calendar-year{
+  font-size: 30px;
+  margin-right: 20px;
+  position: relative;
+  bottom: 10px;
+}
+
+.alert{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alert-model {
+  color:#262626; 
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul{
+  list-style: none;
 }

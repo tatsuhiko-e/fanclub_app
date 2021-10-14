@@ -1,7 +1,7 @@
 <div class="simple-calendar">
-  <div class="text-center year1"> <%= start_date.year %></div>
   <div class="calendar-heading text-center">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    <span class="calendar-year"><%= start_date.year %></span>
     <span class="calendar-title month1"><%= t('date.month_names')[start_date.month] %></span>
     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
   </div>

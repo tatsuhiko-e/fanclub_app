@@ -1,0 +1,37 @@
+<div class="user-show-container<%= @user.theme %>">
+  <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+  <ul class='table-ul<%= @user.theme %> pl-0'>
+    <li>
+      <%= link_to "プロフィール", @user, class: "" %>
+    </li>
+    <li class="current">
+      <%= link_to "ブログ", posts_user_path(@user), class: "" %>
+    </li>
+    <li>
+      <%= link_to "スケジュール", events_user_path(@user), class: "" %>
+    </li>
+    <li>
+      <%= link_to "動画", videos_user_path(@user), class: "" %>
+    </li> 
+    <li>
+      <%= link_to "Contact", "/", class: "" %>
+    </li> 
+  </ul>
+
+  <% if user_signed_in? && @user.id == current_user.id %>
+    <div class="text-center mt-3">
+      <%= link_to  "投稿する",new_post_path, class: "post-button" %>
+    </div>
+  <% end %>
+    
+
+  <div class="container gallery text-center" style="">
+    <% @results.reverse_each do |post| %>
+      <%= link_to image_tag(post.image.variant(combine_options:{gravity: :center, resize:"585x585^", crop:"585x585+0+0"}).processed, class: "post-image"), post_path(post) %>
+    <% end %>
+  </div> 
+  <div class="text-center">
+    <%= paginate @results %>
+  </div>
+  
+</div>
