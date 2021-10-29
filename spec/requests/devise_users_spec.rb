@@ -28,7 +28,7 @@ RSpec.describe "UserAuthentications", type: :request do
 
       it 'リダイレクトされること' do
         post user_registration_path, params: { user: user_params }
-        expect(response).to redirect_to root_url
+        expect(response).to redirect_to new_user_session_path
       end
     end
 

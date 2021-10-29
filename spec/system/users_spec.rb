@@ -82,7 +82,7 @@ RSpec.describe '', type: :system do
     end
 
     context '管理者aが一般ユーザーbのプロフィールを見ている時' do
-      let(:login_user) { user_b }
+      let(:login_user) { user_a }
 
       before do
         sign_in_as(login_user)
@@ -151,12 +151,86 @@ RSpec.describe '', type: :system do
     end
   end
 
-  describe "" do
-    context "under condition" do
-      it "behaves like" do
-        
+  describe "編集機能" do
+    context "管理者aが編集する時" do
+      let(:login_user) { user_a }
+      before do
+        sign_in_as(login_user)
+        visit edit_user_path(login_user)
+
+        fill_in "user[name]",	with: "編集後"
+        select(value = "2", from: "user[theme]") 
+        click_button 'commit'
+      end
+      it "名前が編集後に編集される" do
+        expect(page).to have_content '編集後'
       end
     end
   end
-  
+
+  context "一般ユーザーbが編集する時" do
+    let(:login_user) { user_b }
+    before do
+      sign_in_as(login_user)
+      visit edit_user_path(login_user)
+
+      fill_in "user[name]",	with: "編集後"
+      click_button 'commit'
+    end
+    it "名前が編集後に編集される" do
+      expect(page).to have_content '編集後'
+    end
+  end
+
+  context "ログインしていないユーザー編集リンクにアクセスした時" do
+    before do
+      visit edit_user_path(user_a)
+    end
+    it "ログインリンクにリダイレクト" do
+      expect(page).to have_content 'ログインもしくはアカウント登録してください'
+    end
+  end
+
+  context "別のユーザーの編集リンクにアクセスした時" do
+    let(:login_user) { user_b }
+    before do
+      sign_in_as(login_user)
+      visit edit_user_path(user_a)
+    end
+    it "マイページにリダイレクトされる" do
+      expect(page).to have_content '江口b'
+    end
+  end
+
+  describe "ユーザーアカウント削除機能" do
+    context "管理者aがアカウントを削除した時" do
+      let(:login_user) { user_a }
+      before do
+        sign_in_as(login_user)
+        visit edit_user_path(login_user)
+        execute_script('window.scrollBy(0,10000)')
+        click_link 'アカウントの削除'
+        page.driver.browser.switch_to.alert.accept
+      end
+      it "アカウントが削除されマイページにリダイレクトされる" do
+        expect(page).to have_content 'あなたの日常に一つの楽しみを'
+        expect(User.where(name: '江口aa').count).to eq 0
+      end
+    end
+
+    context "一般ユーザーbがアカウントを削除した時" do
+      let(:login_user) { user_b }
+      before do
+        sign_in_as(login_user)
+        visit edit_user_path(login_user)
+        execute_script('window.scrollBy(0,10000)')
+        click_link 'アカウントの削除'
+        page.driver.browser.switch_to.alert.accept
+      end
+      it "アカウントが削除されマイページにリダイレクトされる" do
+        expect(page).to have_content 'あなたの日常に一つの楽しみを'
+        expect(User.where(name: '江口b').count).to eq 0
+      end
+    end
+  end
 end

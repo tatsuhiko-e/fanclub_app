@@ -8,6 +8,7 @@ FactoryBot.define do
     area { 1 }
     gender { 0 }
     profile {'aaaaaaaaaaaaa'}
+    theme { 1 }
     
     admin true
     

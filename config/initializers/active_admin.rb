@@ -6,7 +6,11 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Login App"
 
+  config.clear_stylesheets!
+  config.register_stylesheet 'active_admin'
 
+  config.clear_javascripts!
+  config.register_javascript 'active_admin'
 
 
   # Set the link url for the title. For example, to take

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :omniauthable
   has_one_attached :image
+  attr_accessor :x, :y, :width, :height
   has_many :members, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :events, dependent: :destroy

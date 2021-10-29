@@ -8,4 +8,7 @@ class HomeController < ApplicationController
       @area_user = area_user1.where.not(theme: 0).order(created_at: :desc).limit(4)
     end
   end
+
+  def makefanclub
+  end
 end

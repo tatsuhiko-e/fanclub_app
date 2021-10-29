@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.onimg {
+  width: 500px;        /* 画像の横幅（自由に指定） */
+  position: relative;  /* 帯の表示位置の基準とする */
+}
+
+.onimg-img {
+  width: 100%;
+}
+
+.onimg-title {
+  color: #fff;
+  text-align: center;
+  width: 100%;         /* 画像の幅に合わせるため */
+  padding: 10px 0;
+  position: absolute;  /* relativeの要素を基準にする */
+  left: 0;             /* 基準からみて左寄せ */
+  bottom: 50px;           /* 基準からみて下寄せ */
+  background: rgba(0,0,0,0.5);  /* 半透明の背景。 */
+}
+
 .font1{
    font-size: 22px;
    font-weight: bold;
@@ -45,7 +66,6 @@
   .swiper-wrapper{
     max-height: 600px;
     max-width: 1200px; 
-    
    
   }
 

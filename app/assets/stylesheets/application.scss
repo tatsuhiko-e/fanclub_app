@@ -13,13 +13,13 @@
  *= require simple_calendar
  *= require_tree .
  *= require_directory .
+ *= require cropper.min.css
  *= require_self
  */
- 
+
 
  html, body {
   font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
-  
 }
 
 body {
@@ -31,7 +31,17 @@ html{
   text-decoration: none;
 }
 
+
+
+
+nav{ 
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
 .navbar-0{
+  
   background-color: #741c9c;
 }
 
@@ -47,7 +57,8 @@ footer {
 
 .container{
   background-color: #fcfaff;
-  
+  overflow: hidden;
+  padding: 0px;
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -55,25 +66,6 @@ footer {
 
 /* navbar */
 
-.navbar-nav{
-  margin-top: 10px;
-}
-
-.nav-title{
-  color: #f1f1f1;
-}
-
-.navbar-nav li{
-  color: #f1f1f1;
-}
-
-.navbar{
-  height: 90px;
-}
-
-.sginup-btn{
-  color: #741c9c;
-}
 
   /*検索フォーム*/
 
@@ -152,20 +144,17 @@ footer {
   background: #0bd;
   top: 30px;
   opacity: 0;
-  
+
   transition: .5s;
 }
   
 /*ここまでnavbar*/
-  
-
-  
 
  .container{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+
   }
   
   .swiper-container {

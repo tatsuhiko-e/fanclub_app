@@ -5,17 +5,17 @@ RSpec.describe 'member投稿・編集・削除機能', type: :system do
   let(:user_b) { FactoryBot.create(:user, email: 'bbb@example.com', name:'江口b', admin: false) }
   let!(:member_a) { FactoryBot.create(:member, name: 'human', user: user_a) }
 
-  describe '一覧表示機能' do
+  describe '表示機能' do
     context '管理者aがログインしているとき' do
       let(:login_user) { user_a }
       before do
         sign_in_as(login_user)
-        visit user_path(user_a)
+        visit user_path(login_user)
       end
 
       it '投稿ボタンとイベント一覧が表示される' do      
         expect(page).to have_content 'メンバーを追加する'
-        expect(page).to have_content 'member'
+        expect(page).to have_content 'メンバー'
       end
     end
 

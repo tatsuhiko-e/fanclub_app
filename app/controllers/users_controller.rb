@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :posts, :events, :videos]
+  before_action :set_user, only: [:show, :edit, :posts, :events, :videos, :contacts]
   before_action :ensure_correct_user, only: [:destroy]
 
   def index
@@ -49,6 +49,11 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
+      session[:crop_x] = user_params[:x]
+      session[:crop_y] = user_params[:y]
+      session[:crop_width] = user_params[:width]
+      session[:crop_height] = user_params[:height]
+
       redirect_to user_path(current_user.id)
     else 
       render :edit
@@ -69,10 +74,14 @@ class UsersController < ApplicationController
     @videos = @user.videos
   end
 
+  def contacts
+    @contact = Contact.new
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile, :area, :gender, :age, :theme, :image)
+    params.require(:user).permit(:name, :profile, :area, :gender, :age, :theme, :image, :x, :y, :width, :height)
   end
 
   def set_user

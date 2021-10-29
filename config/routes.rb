@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get :posts
       get :events
       get :videos
+      get :contacts
     end
   end
 
@@ -49,6 +50,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
+
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
 
@@ -61,5 +67,4 @@ Rails.application.routes.draw do
 
   get '/about', to: 'home#about'
   get '/makefanclub', to: 'home#makefanclub'
-  
 end

@@ -1,5 +1,77 @@
 <% if @user.admin? %>
-  
+  <div class="user-show-container<%= @user.theme %>">
+    <%= image_tag @user.image.variant(combine_options:{gravity: :center, resize:"1200x600^", crop:"1200x600+0+0"}).processed %>
+    <ul class='table-ul<%= @user.theme %> pl-0'>
+      <li class="current">
+        <%= link_to "プロフィール", @user, class: "" %>
+      </li>
+      <li>
+        <%= link_to "ブログ", posts_user_path(@user), class: "" %>
+      </li>
+      <li>
+        <%= link_to "スケジュール", events_user_path(@user), class: "" %>
+      </li>
+      <li>
+        <%= link_to "動画", videos_user_path(@user), class: "" %>
+      </li> 
+      <li>
+        <%= link_to "コンタクト", "/", class: "" %>
+      </li> 
+    </ul>
+    <div >
+      <h1 class="user-name-<%= @user.theme %> text-center"><%= @user.name %></h1>
+    </div>
+    <div class="follow_button text-right" id="follows_buttons_<% @user.id %>">
+      <%= render 'relationships/follow_button', user: @user %>
+    </div>
+    <p class="profile text-center"><%= @user.profile %></p>
+
+    <!- メンバー一覧 ->
+
+    <h2 class='font8-<%= @user.theme %>'>メンバー</h2>  
+
+    <% if user_signed_in? && @user.id == current_user.id %>
+      <div class="text-right"><%= link_to "メンバーを追加する", new_member_path(@user) %></div>
+    <% end %>
+    <div class="member">
+      <% @user.members.each do |member| %>
+        <section class="card1">
+        <%= link_to member_path(member), class: "" do %>
+          <div class="card-title1 text-center"><%= image_tag(member.image.variant(gravity: :center, resize:"640x640^", crop:"640x640+0+0").processed, class: "img-fluid card-img1") %></div>
+          <div class="card-content1">
+            <h1 class="card-title1"><%= member.name %></h1>
+          </div>
+        <% end %>
+        </section>      
+      <% end %>
+    </div>
+    <h2 class='font8-<%= @user.theme %>'>近日のイベント</h2>
+    <% @events.each do |event| %>
+      <section class="card4">
+        <%= link_to event_path(event), class: "" do %>
+          <div class=""><%= image_tag(event.image.variant(gravity: :center, resize: '550x400' ,crop: "500x300+0+0").processed, class: "card-img5 img-fluid") %></div>
+          <div>
+            <a class="card-title4"><%= event.title %></a><br>
+            <a class="card-text4"><%= event.start_time.strftime("%m月%d日") %></a><br>
+            <a class="card-text4"><%= event.place %></a>
+          </div>
+        </section>
+      <% end %>
+    <% end %>
+    <div class="all_look text-right"><%= link_to "もっと見る", events_user_path(@user) %></div>
+    <h2 class='font8-<%= @user.theme %>'>最近の投稿</h2>
+    <% @posts.each do |post| %>
+      <section class="card4">
+        <%= link_to post_path(post.id), class: "" do %>
+          <div class=""><%= image_tag(post.image.variant(gravity: :center, resize: '550x400' ,crop: "500x300+0+0").processed, class: "card-img5 img-fluid") %></div>
+          <div>
+            <a class="card-title4"><%= post.title %></a><br>
+          </div>
+        </section>
+      <% end %>
+    <% end %>
+    <div class="all_look text-right"><%= link_to "もっと見る", posts_user_path(@user) %></div>
+
 
 <% else %>
 
@@ -16,7 +88,9 @@
                 <i class="fas fa-edit"></i>  
               <% end %>             
             <% else %> 
-              <% if @isRoom == true %>
+              <%
+=begin%>
+ <% if @isRoom == true %>
                 <div class="sms-icon">
                   <a href="/rooms/<%= @roomId %>"><i class="fas fa-sms"></i></a>
                 </div>
@@ -27,7 +101,9 @@
                   <% end %>
                   <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
                 <% end %>
-              <% end %>
+              <% end %> 
+<%
+=end%>
             <% end %>
           </li>
         </ul>

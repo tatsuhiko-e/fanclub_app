@@ -76,6 +76,7 @@ gem 'mini_racer'
 gem 'mini_magick'
 
 gem 'pry-rails'
+gem 'rails-controller-testing'
 
 gem 'simple_calendar', '~> 2.0'
 
@@ -83,6 +84,7 @@ gem 'ransack'
 gem 'jp_prefecture'
 gem 'kaminari'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
-gem 'devise-i18n'
+
 gem 'activeadmin'

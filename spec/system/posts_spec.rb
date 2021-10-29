@@ -15,10 +15,10 @@ RSpec.describe 'ポスト投稿・編集・削除機能', type: :system do
 
       before do
         sign_in_as(login_user)
-        visit posts_user_path(login_user)
+        visit posts_path
       end
    
-      it 'ファンクラブが表示される' do
+      it 'ファンクラブ一覧が表示される' do
         expect(page).to have_selector("img[src$='test_image2.jpg']")
       end 
     end
@@ -28,21 +28,19 @@ RSpec.describe 'ポスト投稿・編集・削除機能', type: :system do
 
       before do  
         sign_in_as(login_user)
-        visit posts_user_path(login_user)
+        visit posts_path
       end
 
-      it 'ファンクラブが表示されない' do
-        expect(page).to have_no_content '近日のイベント'
-        expect(page).to have_selector("img[src$='test_image3.jpg']")
+      it 'ファンクラブ一覧が表示される' do
+        expect(page).to have_selector("img[src$='test_image2.jpg']")
       end 
     end
 
     context 'ログインしていないとき' do
       before do  
-        visit user_path(user_a)
+        visit posts_path
       end
-      it 'ファンクラブが表示される' do
-        expect(page).to have_content '近日のイベント'
+      it 'ファンクラブ一覧が表示される' do
         expect(page).to have_selector("img[src$='test_image2.jpg']")
       end 
     end
