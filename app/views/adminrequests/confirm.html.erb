@@ -1,0 +1,20 @@
+<p class="text-center confirm-item1 mt-5">名前/チーム名</p>
+<p class="text-center confirm-item2"><%= @adminrequest.teamname %></p>
+
+<p class="text-center confirm-item1 mt-5">SNS_URL</p>
+<p class="text-center confirm-item2"><%= @adminrequest.twitter_url %></p>
+
+<%= form_for(@adminrequest) do |f| %>
+  <%= f.hidden_field :teamname %>
+  <%= f.hidden_field :twitter_url %>
+  <div class="form-group text-center field mt-5">
+    <%= f.submit "送信", class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>
+<%= form_for @adminrequest, url: back_path do |f| %>
+  <%= f.hidden_field :teamname %>
+  <%= f.hidden_field :twitter_url %>
+  <div class="form-group text-center field mt-5">
+    <%= f.submit "入力画面に戻る", class: "btn btn-large btn-outline-primary" %>
+  </div>
+<% end %>

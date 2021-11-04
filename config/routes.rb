@@ -50,10 +50,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :adminrequests, only: [:new, :create]
+  post 'adminrequests/confirm', to: 'adminrequests#confirm', as: 'confirm'
+  post 'adminrequests/back', to: 'adminrequests#back', as: 'back'
+  get 'done', to: 'adminrequests#done', as: 'done'
+
   resources :contacts, only: [:new, :create]
-  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
-  post 'contacts/back', to: 'contacts#back', as: 'back'
-  get 'done', to: 'contacts#done', as: 'done'
+  post 'contacts/confirm', to: 'contacts#confirm'
+  post 'contacts/back', to: 'contacts#back'
+  get 'done', to: 'contacts#done'
 
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
