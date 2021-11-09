@@ -62,7 +62,7 @@
   <div class="new-fanclub-container">
     <div class="member1">
       <% @users.last(6).each do |user| %>
-        <section class="card3 <%= ' user-woman' if user.gender == "女" %>">
+        <section class="card3">
           <%= link_to user_path(user), class: " text-dark" do %>
             <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
             <div class="card-content3">
@@ -82,14 +82,15 @@
   <div class="near-fanclub-container">
     <div class="member1">
       <% @area_user.last(6).each do |user| %>
-        <div class="onimg">
+        <section class="card3">
           <%= link_to user_path(user), class: " text-dark" do %>
-           <div class="onimg-img"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
-          <div class="nimg-title">
-            <h2 class=""><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
-            <a class=""><%= "♡#{user.followers.count}" %><a>
+            <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %>
+              <div class="card-content3">
+                <div class="card-name3"><%= user.name %></div>
+              </div>
+            </div>
           <% end %>
-        </div>  
+        </section>
       <% end %>
     </div>
   </div>

@@ -3,7 +3,7 @@ class AdminrequestMailer < ApplicationMailer
     @adminrequest = adminrequest
     mail(
       from: 'system@example.com',
-      to:   ENV['TOMAIL'],
+      to:   ENV["SMTP_ADDRESS"],
       subject: 'お問い合わせ通知'
     )
   end

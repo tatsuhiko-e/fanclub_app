@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:destroy]
 
   def index
-    @users = User.where(admin: true)
+    admin_users = User.where(admin: true)
+    @users = admin_users.where.not(theme: 0).order(created_at: :desc)
     @user_search = @users.ransack(params[:q])
     @user_results = @user_search.result.page(params[:page])
    

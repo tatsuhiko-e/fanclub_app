@@ -73,6 +73,19 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
+  config.delivery_method = :smtp
+  cinfig.smtp_settings = {
+    :address => "smtp.gmail.com", 
+    :domain => "gmail.com",
+    :port => 587,
+    # user_name は自分のメールアドレスを記載。
+    :user_name => ENV["ESMTP_ADDRESS"],
+    # password は作成したアプリパスワードを記載。
+    :password => ENV["ESMTP_PASSWORD"],
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
