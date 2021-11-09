@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # get 'events/index'
-  # get 'events/new'
-  # get 'events/create'
-  # get 'events/edit'
-  # get 'events/update'
-  # get 'events/destroy'
-  # get 'relationships/create'
-  # get 'relationships/destroy'
   root to: 'home#about'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -49,7 +41,6 @@ Rails.application.routes.draw do
       get :day
     end
   end
-
   resources :adminrequests, only: [:new, :create]
   post 'adminrequests/confirm', to: 'adminrequests#confirm', as: 'confirm'
   post 'adminrequests/back', to: 'adminrequests#back', as: 'back'
@@ -62,12 +53,8 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
-
   resources :relationships, only: [:create, :destroy]
 
-  
-  
-  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/about', to: 'home#about'

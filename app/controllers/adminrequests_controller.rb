@@ -1,8 +1,7 @@
 class AdminrequestsController < ApplicationController
   def new
-    unless user_signed_in?
-      redirect_to new_user_session_path, notice: 'ログインしてからやり直してください'
-    end
+    redirect_to new_user_session_path, notice: 'ログインしてからやり直してください' unless user_signed_in?
+    redirect_to user_path(current_user) if user_signed_in? && current_user.admin
     @adminrequest = Adminrequest.new
 
   end
@@ -21,6 +20,7 @@ class AdminrequestsController < ApplicationController
 
   def create
     @adminrequest = Adminrequest.new(adminrequest_params)
+    @adminrequest.user_id = current_user.id
     if @adminrequest.save
       AdminrequestMailer.send_mail(@adminrequest).deliver_now
       redirect_to done_path

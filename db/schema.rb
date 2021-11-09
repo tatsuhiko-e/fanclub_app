@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 2021_10_29_092210) do
   create_table "adminrequests", force: :cascade do |t|
     t.string "teamname"
     t.string "twitter_url"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_adminrequests_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
