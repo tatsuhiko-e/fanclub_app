@@ -47,10 +47,21 @@
     <%= render 'layouts/error_messages', model: f.object %>
 
     <div class="form-group text-center field">
-      <%= f.label :name, 'チーム名', class: "mt-3 " %><br>
+      <%= f.label :image, 'プロフィール画像', class: "mt-3" %><br>
+      <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;" %>
+    </div>
+
+    <div class="form-group text-center field">
+      <%= f.label :name, 'チーム名' %><br>
       <%= f.text_field :name, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
     </div>
 
+    <div class="form-group text-center field ">
+      <%= f.check_box :hide_name, class: "hide-name-form" %>
+      <%= f.label :hide_name, 'チーム名/名前を表示させない', class: "mt-3 form-check-label", for: "flexCheckDefault" %><br> 
+      <p class="hide-name-explanation">※プロフィール画像にチーム名が入っている場合などはチェックを入れる事を推奨しています。</p>
+    </div>
+  
     <div class="form-group text-center field">
       <%= f.label :profile, 'プロフィール' %><br>
       <%= f.text_field :profile, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
@@ -67,13 +78,8 @@
     </div>
 
     <div class="form-group text-center field">
-      <%= f.label :image, 'プロフィール画像' %><br>
-      <%= f.file_field :image, class: "form-control image-input", type:"file", id:"formFile", style: "width: 500px;" %>
-    </div>
-
-    <div class="form-group text-center field">
       <%= f.label :theme, 'テーマ' %><br>
-      <%= f.select :theme, options_for_select((1..10).to_a), { include_blank: '選択'}, class: "form-select", label: "Default select example", style: "width: 200px;" %>
+      <%= f.select :theme, options_for_select((1..10).to_a), class: "form-select", label: "Default select example", style: "width: 200px;" %>
     </div>
 
     <div class="form-group text-center field">

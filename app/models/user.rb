@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include JpPrefecture
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :omniauthable
   has_one_attached :image
@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :tickets, dependent: :destroy
   has_many :ticket_events, through: :tickets, source: :event
+  has_many :contacts
 
 
   def follow(other_user)
@@ -41,15 +42,15 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true, length: { in: 1..15 }
- 
+
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
- 
-  # def active_for_authentication? 
-  #   super && approved? 
-  # end 
-  
-  # def inactive_message 
+
+  # def active_for_authentication?
+  #   super && approved?
+  # end
+
+  # def inactive_message
   #   approved? ? super : :not_approved
   # end
 
@@ -64,16 +65,19 @@ class User < ApplicationRecord
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-    
+
     unless user
       user = User.new(
         uid: auth.uid,
         provider: auth.provider,
         name: auth.info.name,
         email: auth.info.email ||= User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
+        password: Devise.friendly_token[0, 20],
       )
-
+      image_url = auth[:info][:image]
+      url = URI.parse(image_url)
+      avatar = url.open
+      user.image.attach(io: avatar, filename: "user_avatar.jpg")
       user.skip_confirmation!
       user.save
     end
@@ -95,6 +99,7 @@ class User < ApplicationRecord
   }
 
   enum gender: { 男性: 0, 女性: 1, 男女グループ: 2 }
+
 
 
   private

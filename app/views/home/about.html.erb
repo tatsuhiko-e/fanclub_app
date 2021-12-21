@@ -1,42 +1,39 @@
-<div class="container">
-<div class="row">
-<div class="swiper-container">
-<!-- メイン表示部分 -->
-    <div class="swiper-wrapper">
-    <!-- 各スライド -->
-    <% @users.last(6).each do |user| %>
-      <%= link_to user_path(user),class:"swiper-slide" do %>
-        <div class="swiper-img text-center"><%= image_tag(user.image.variant(resize:"1200x600").processed, class: "") %></div>
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+
+    <% @users.last(3).each_with_index do |user, i| %>
+      <% if i == 0 %>
+        <div class="carousel-item active">
+          <%= link_to user_path(user) do %>
+            <%= image_tag(user.image.variant(resize:"1200x600").processed, class: "d-block w-100 carousel-img") %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="carousel-item">
+          <%= link_to user_path(user) do %>
+            <%= image_tag(user.image.variant(resize:"1200x600").processed, class: "d-block w-100 carousel-img") %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div>
-</div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/js/swiper.min.js"></script>
-<script>
-    var mySwiper = new Swiper ('.swiper-container', {
-        loop: true,        //画像のループ
-        effect: 'slide',   //切り替わるときのアニメーション
-        speed: 3000,       //画像の切替スピード
-        autoplay: {        //自動で動かす
-        delay: 3000,
-        disableOnInteraction: true
-        },
-        pagination: {      //ページネーション
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true
-        },
-        navigation: {      //ナビケーション
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-        },
-    });
-</script>
-
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
 
 
 <div class="text-center mt-3">
@@ -56,20 +53,21 @@
   <h2 class="font3">ファンクラブを作る方はこちら</h2>
   <h2 class="font3">簡単無料でファンクラブを作ろう</h2>
   <%= link_to 'ファンクラブを作る', makefanclub_path, class: "btn-stitch" %>
-</div> 
+</div>
 
 <h2 class="font4 ">新規ファンクラブ</h2>
   <div class="new-fanclub-container">
     <div class="member1">
       <% @users.last(6).each do |user| %>
-        <section class="card3">
+      <section class="eventcard">
           <%= link_to user_path(user), class: " text-dark" do %>
-            <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
+            <%= image_tag(user.image.variant(gravity: :center, resize:"540x337^", crop:"540x337+0+0").processed, class: "img-fluid") %>
             <div class="card-content3">
-              <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
+              <div class="card-name3"><%= user.name.truncate(13) %></div>
               <ul class="card-list3">
-                <li class="card-text3"><%= user.profile.truncate(50) %></li>
+                <li class="eventcard-title"><%= user.area %></li>
                 <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
+              </ul>
             </div>
           <% end %>
         </section>
@@ -82,11 +80,15 @@
   <div class="near-fanclub-container">
     <div class="member1">
       <% @area_user.last(6).each do |user| %>
-        <section class="card3">
+        <section class="eventcard">
           <%= link_to user_path(user), class: " text-dark" do %>
-            <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %>
+            <div class="eventcard-img"><%= image_tag(user.image.variant(gravity: :center, resize:"540x337^", crop:"540x337+0+0").processed, class: "img-fluid") %>
               <div class="card-content3">
-                <div class="card-name3"><%= user.name %></div>
+                <div class="card-name3"><%= user.name.truncate(13) %></div>
+                <ul class="card-list3">
+                  <li class="eventcard-title"><%= user.area %></li>
+                  <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
+                </ul>
               </div>
             </div>
           <% end %>
@@ -95,4 +97,3 @@
     </div>
   </div>
 <% end %>
-

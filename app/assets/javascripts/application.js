@@ -15,9 +15,8 @@
 //= require cropper.min.js
 //= require jquery-cropper.min.js
 //= require activestorage
-//= require turbolinks
 //= require_tree .
-  
+
   $(function(){
     //hamburger menu click
     $('#nav_toggle').click(function(){
@@ -32,5 +31,3 @@
       }
     });
   });
-  
-  

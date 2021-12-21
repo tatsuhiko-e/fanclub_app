@@ -1,10 +1,10 @@
 class CreateContacts < ActiveRecord::Migration[5.2]
   def change
     create_table :contacts do |t|
-      t.string :name, null: false
-      t.string :email, null: false
-      t.string :phone_number, null: false
-      t.text :message, null: false
+      t.string     :name
+      t.text       :message, null: false
+      t.string     :to_email, null: false
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

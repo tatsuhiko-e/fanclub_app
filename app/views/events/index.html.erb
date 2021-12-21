@@ -13,7 +13,6 @@
           <%= key %>
         <% end %>
       </div>
-
       <div class="search-area">
         <div class="text-center mb-2 user-search-fonts">活動地域</div>
         <% User.areas.keys.each_with_index do |key, i| %>
@@ -25,7 +24,6 @@
       </div>
     </div>
   </div> 
-
   <div class="form-group text-center field mt-5">
     <%= f.submit "検索", class: "btn btn-large btn-primary" %>
   </div>
@@ -37,19 +35,20 @@
     <%= link_to "#{events.count}件のイベント", day_event_path(date, q: params[:q].to_unsafe_hash) %>
   <% end %>
 <% end %>
-
-<% @order_event.reverse_each do |event| %>
-  <%= link_to event_path(event), class: "" do %>
-    <div class="card4">
-      <div class=""><%= image_tag(event.image.variant(gravity: :center, resize: '550x400' ,crop: "500x300+0+0").processed, class: " card-img5") %></div>
-      <div>
-        <div class="card-event-title mt-3"><%= event.title %></div><br>
-        <a class="card-event-text"><%= event.start_time.strftime("%m月%d日 %H:%M") %></a><br>
-      </div>
-    </div>
+<div class="gallery text-center" style="">
+  <% @order_event.each do |event| %>
+    <section class="eventcard">
+      <%= link_to event_path(event), class: " text-dark" do %>
+        <div class="eventcard-img"><%= image_tag(event.image.variant(gravity: :center, resize:"560x349^", crop:"560x349+0+0").processed, class: "img-fluid") %>
+          <div class="card-content3">
+            <div class="eventcard-date"></div>
+            <div class="eventcard-title"><%= event.title %></div>
+          </div>
+        </div>
+      <% end %>
+    </section>
   <% end %>
-<% end %>        
-
+</div>
 <div class="text-center">
   <%= paginate @order_event %>
 </div>

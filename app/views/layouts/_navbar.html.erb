@@ -1,37 +1,23 @@
+<nav class="navbar <%= " navbar-#{@user.theme}" if !@user.nil? %> navbar-dark  border-bottom border-3 border-white" style="<%= 'background-color: #741c9c;' if @user.nil? || @user.theme == 1 || @user.theme == 0 %>">
+  <div class="navbar-brand"><%= link_to "アイメモ", root_path, class: "nav-title" %></div>
 
-
-
-  <nav class="navbar <%= " navbar-#{@user.theme}" if !@user.nil? %> navbar-expand-sm navbar-dark  border-bottom border-3 border-white" style="<%= 'background-color: #741c9c;' if @user.nil? || @user.theme == 1 %>">
-    <div class="navbar-brand"><%= link_to "Navbar", root_path, class: "nav-title" %></div>
-    <!-- 横幅が狭い時に出るハンバーガーボタン -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- メニュー項目 -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <% if user_signed_in? %>
-          <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></li>
-          <li id="sbtn6" class="nav-item">
-            <%= link_to user_path(current_user.id) do %>
-              <i class="far fa-envelope fa-3x"></i>
-            <% end %>
-          </li>
-          <li id="sbtn7" class="nav-item">
-            <%= link_to user_path(current_user.id) do %>
-              <i class="far fa-bell fa-3x"></i>
-            <% end %>
-          </li>
-          <li id="sbtn3" class="nav-item">
-            <%= link_to user_path(current_user) do %>
-              <i class="fas fa-user-circle fa-3x"></i>
-            <% end %>
-          </li>
-        <% else %>
-          <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'btn btn-light mr-3 sginup-btn' %></li>
-          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-light' %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+  <!-- メニュー項目 -->
+    <ul class="nav-ul">
+      <% if user_signed_in? %>
+        <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light logout-btn" %></li>
+        <li id="sbtn7" class="nav-item">
+          <%= link_to contact_mails_user_path(current_user.id) do %>
+            <i class="far fa-envelope fa-3x"></i>
+          <% end %>
+        </li>
+        <li id="sbtn3" class="nav-item">
+          <%= link_to user_path(current_user) do %>
+            <i class="fas fa-user-circle fa-3x"></i>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'btn btn-light mr-2 sginup-btn nav-btn' %></li>
+        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-light mx-4 nav-btn' %></li>
+      <% end %>
+    </ul>
+</nav>

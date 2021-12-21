@@ -20,17 +20,17 @@
     flex-wrap: wrap;
   }
 
-  .post-image {
+  .post-show-image{
+    width: 100%;
+    height: auto;
+  }
 
+  .post-image {
     margin: 5px;
     border-radius: 0px;
     box-shadow: 0 2px 5px #ccc;
   }
 
-  
-  
-  
-  
   #submit-btn1{
   height:50px;
   position:relative; 
@@ -56,7 +56,6 @@
   .plus-icon{
     color: rgb(178, 149, 255);
     position: absolute;
-    
   }
 
   // event 一覧
@@ -121,13 +120,13 @@
    }
 
   .comment-form-ul{
-    margin-left: 100px;
+    margin-left: 250px;
     list-style: none;
     display: flex;
   }
 
   .form-control1{
-    width: 800px;
+    width: 500px;
   }
   
   .post-title-button{

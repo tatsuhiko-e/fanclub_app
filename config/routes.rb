@@ -17,12 +17,14 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
+      get :email_edit, as: 'edit_email'
       get :followings
       get :followers
       get :posts
       get :events
       get :videos
       get :contacts
+      get :contact_mails
     end
   end
 
@@ -46,10 +48,10 @@ Rails.application.routes.draw do
   post 'adminrequests/back', to: 'adminrequests#back', as: 'back'
   get 'done', to: 'adminrequests#done', as: 'done'
 
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: [:new, :create, :show]
   post 'contacts/confirm', to: 'contacts#confirm'
   post 'contacts/back', to: 'contacts#back'
-  get 'done', to: 'contacts#done'
+  get 'mail_done', to: 'contacts#mail_done'
 
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]

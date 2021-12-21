@@ -31,24 +31,34 @@ html{
   text-decoration: none;
 }
 
-
-
-
-nav{ 
+nav{
   padding: 0px;
   margin: 0px;
   overflow: hidden;
 }
 
-.navbar-0{
-  
-  background-color: #741c9c;
+.nav-btn{
+  font-size: 30px;
 }
 
-footer {
-  margin-top: 80px;
-  height: 100px;
-  background-color: #741c9c;
+.nav-ul{
+  display: flex;
+  position: relative;
+  top: 10px;
+  right: 40px;
+}
+
+.nav-title{
+  color: #e9fffe;
+  font-size: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.logout-btn{
+  position: relative;
+  left: 20px;
 }
 
 .pagination {
@@ -64,23 +74,16 @@ footer {
   margin-right: auto;
 }
 
-/* navbar */
-
-
-  /*検索フォーム*/
-
-  #sbox2{
-    
+#sbox2{
   height:38px;
   width: 300px;
-  padding:0 10px; 
-
+  padding:0 10px;
   border-radius:2px;
   outline:0;
   background:rgb(255, 255, 255);	
-  }
-  
-  #sbtn2{
+}
+
+#sbtn2{
   height:50px;
   position:relative; 
   left:-45px;/*アイコン左右の位置調整*/
@@ -89,15 +92,15 @@ footer {
   color: #741c9c;
   border:none;
   font-size:20px;/*アイコンサイズ*/
-  }
-  #sbtn5:hover{
+}
+#sbtn5:hover{
   color:#f1f1f1;
-  }
+}
 
 #sbtn3{
   color: #ffffff;
   height:50px;
-  position:relative; 
+  position:relative;
   left:0px;/*アイコン左右の位置調整*/
   top:-8px;
   background:none;
@@ -128,7 +131,6 @@ footer {
 }
 
 #sbtn7{
-  
   position:relative; 
   left:-25px;/*アイコン左右の位置調整*/
   top:-5px;
@@ -147,19 +149,19 @@ footer {
 
   transition: .5s;
 }
-  
+
 /*ここまでnavbar*/
 
- .container{
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+.container{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
-  }
-  
-  .swiper-container {
-    width: 100%;
-  }
+}
+
+.swiper-container {
+  width: 100%;
+}
 
 /* symple_calendar */
 .year1 {

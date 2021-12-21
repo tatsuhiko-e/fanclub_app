@@ -7,5 +7,6 @@ class AddNameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :gender, :integer  
     add_column :users, :profile, :text   
     add_column :users, :theme, :integer, null: false, default: 0
+    add_column :users, :hide_name, :boolean, default: false, null: false
   end
 end

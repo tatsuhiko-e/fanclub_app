@@ -14,9 +14,10 @@
       <%= link_to "動画", videos_user_path(@user), class: "" %>
     </li> 
     <li>
-      <%= link_to "コンタクト", "/", class: "" %>
+      <%= link_to "コンタクト", contacts_user_path(@user), class: "" %>
     </li> 
   </ul>
+  <div class="event-container">
   <% if user_signed_in? && @user.id == current_user.id %>
     <%= link_to 'イベント投稿', new_event_path %>
   <% end %>
@@ -44,4 +45,5 @@
       <hr>
     </div>
   <% end %>
+</div>
 </div>

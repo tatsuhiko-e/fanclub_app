@@ -32,19 +32,19 @@
  
 
 
-<div class="container user_result" style="">
+<div class="member1">
   <% @user_results.reverse_each do |user| %>
-      <section class="card3">
-        <%= link_to user_path(user), class: " text-dark" do %>
-        <div class="card-img3"><%= image_tag(user.image.variant(gravity: :center, resize:"640x400^", crop:"640x400+0+0").processed, class: "img-fluid") %></div>
+    <section class="card5">
+      <%= link_to user_path(user), class: "text-dark" do %>
+        <%= image_tag(user.image.variant(gravity: :center, resize:"540x337^", crop:"540x337+0+0").processed, class: "img-fluid") %>
         <div class="card-content3">
-          <h2 class="card-title3"><%= user.name.truncate(13)%><%= "(#{user.area})" %></h2>
+          <div class="card-name3 text-center"><%= user.name.truncate(13) %></div>
           <ul class="card-list3">
-            <li class="card-text3"><%= user.profile.truncate(50) %></li>
+            <li class="eventcard-title"><%= user.area %></li>
             <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
           </ul>
         </div>
-        <% end %>
-      </section>
+      <% end %>
+    </section>
   <% end %>
 </div>

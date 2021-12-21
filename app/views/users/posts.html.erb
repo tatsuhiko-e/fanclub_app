@@ -14,7 +14,7 @@
       <%= link_to "動画", videos_user_path(@user), class: "" %>
     </li> 
     <li>
-      <%= link_to "コンタクト", "/", class: "" %>
+      <%= link_to "コンタクト", contacts_user_path(@user), class: "" %>
     </li> 
   </ul>
 
@@ -23,15 +23,13 @@
       <%= link_to  "投稿する",new_post_path, class: "post-button" %>
     </div>
   <% end %>
-    
 
-  <div class="container gallery text-center" style="">
+  <div class="gallery text-center user-posts-padding-<%= @user.theme %>">
     <% @results.reverse_each do |post| %>
       <%= link_to image_tag(post.image.variant(combine_options:{gravity: :center, resize:"585x585^", crop:"585x585+0+0"}).processed, class: "post-image"), post_path(post) %>
     <% end %>
+    <div class="text-center">
+      <%= paginate @results %>
+    </div> 
   </div> 
-  <div class="text-center">
-    <%= paginate @results %>
-  </div>
-  
 </div>

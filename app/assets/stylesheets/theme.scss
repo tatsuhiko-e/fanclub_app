@@ -1,99 +1,104 @@
-// theme 2 //
+//------------------- theme2 ----------------------//
+
   .navbar-2{
     background-color:#ff70e0;
   }
 
   .user-show-container2{
     background-color: #ffeff8;
+    padding-bottom: 60px;
   }
 
   .user-name-2{
     color: #cc28be;
     font-size: 60px;
+  }
 
+
+.table-ul2 {
+    background-color: #ff70e0;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+    margin: {
+      top: 1px;
+      bottom: 0px;
     }
- 
-    
+    padding-left: 0px;
+  }
 
-  .table-ul2 {
-      background-color: #ff70e0;
-      display: table;
-      table-layout: fixed;
-      text-align: center;
-      width: 100%;
-      margin: {
-        top: 1px;
-        bottom: 0px;
-      }
-    }
+  .table-ul2 li {
+    border-right: 1px solid #fff;
+    display: table-cell;
+    vertical-align: middle;
+    outline: 1px solid rgb(250, 240, 255);
+    outline-offset: -10px;
+  }
 
-    .table-ul2 li {
-      border-right: 1px solid #fff;
-      display: table-cell;
-      vertical-align: middle;
-      outline: 1px solid rgb(250, 240, 255);
-      outline-offset: -10px;
-    }
+  .table-ul2 li:last-child {
+    border-right: 0;
+  }
 
-    .table-ul2 li:last-child {
-      border-right: 0;
-    }
+  .table-ul2 li a {
+    color: rgb(255, 255, 255);
+    display: block;
+    font-size: 25px;
+    text-decoration: none;
+    padding: 30px 0px;
+  }
 
-    .table-ul2 li a {
-      color: rgb(255, 255, 255);
-      display: block;
-      font-size: 25px;
-      text-decoration: none;
-      padding: 30px 0px;
-    }
+  .table-ul2 li a:hover {
+    background-color: #ff97e8;
+    color: rgb(255, 255, 255);
+  }
 
-    .table-ul2 li a:hover {
-      background-color: #ff97e8;
-      color: rgb(255, 255, 255);
-    }
+  .table-ul2 li.current a {
+    color: rgb(255, 255, 255);
+    background-color: #ff97e8;
+  }
 
-    .table-ul2 li.current a {
-      color: rgb(255, 255, 255);
-      background-color: #ff97e8;
-    }
+  .user-show-heading-2{
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 1120px;
+    border-bottom: solid;
+    border-color: #ff66f2;;
+  }
 
-    .font8-2{
-      font-size: 40px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 20px;
-      width: 1120px;
-      border-bottom: solid;
-      border-color: #ff66f2;;
-    }
 
-// theme3 //
+//------------------- theme3 ----------------------//
+
   .navbar-3{
-    background-color:#000000;
+    background-color:#464646;
+  }
+
+  .user-show-padding-3{
+    background-color: #464646;
   }
 
   .user-show-container3{
-    background-color: #ffffff;
+    background-color: #464646;
+    padding-bottom: 60px;
+  }
+
+  .user-posts-padding-3{
+    background-color: #464646;
   }
 
 .user-name-3{
   color: #000000;
   font-size: 60px;
+  margin: 30px 20px;	/* 外側の余白 上下・左右 */
+  padding: 15px 20px;	/* 内側の余白 上下・左右 */
+}
 
-    margin: 30px 20px;	/* 外側の余白 上下・左右 */
-    padding: 15px 20px;	/* 内側の余白 上下・左右 */
 
-  }
-  .user-name-3:before{
-
-  }
-  .user-name-3:after{
-
-  }
-  
 
 .table-ul3 {
-    background-color: #ffffff;
+    background-color: #b3b3b3;
     display: table;
     table-layout: fixed;
     text-align: center;
@@ -101,15 +106,16 @@
     border-bottom: solid;
     border-top: solid;
     border-width: 1px;
-    border-color: #000000;
+    border-color: #888888;
     margin: {
       top: 0px;
       bottom: 0px;
     }
+    padding-left: 0px;
   }
 
   .table-ul3 li {
-    border-right: 1px solid rgb(190, 190, 190);
+    border-right: 1px solid rgb(165, 165, 165);
     display: table-cell;
     vertical-align: middle;
     outline: 1px solid rgb(141, 141, 141);
@@ -121,7 +127,7 @@
   }
 
   .table-ul3 li a {
-    color: rgb(0, 0, 0);
+    color: rgb(46, 46, 46);
     display: block;
     font-size: 25px;
     text-decoration: none;
@@ -129,22 +135,26 @@
   }
 
   .table-ul3 li a:hover {
-    background-color: #b8b8b8;
-    color: rgb(255, 255, 255);
+    background-color: #5f5f5f;
+    color: rgb(141, 141, 141);
   }
 
   .table-ul3 li.current a {
-    color: rgb(0, 0, 0);
+    color: rgb(207, 207, 207);
     background-color: #383838;
   }
 
-  .font8-3{
-    color: #000000;
+  .user-show-heading-3{
+    color: #d6d6d6;
     font-size: 40px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     width: 1120px;
     border-bottom: solid;
-    border-color: #000000;;
+    border-color: #f3f3f3;;
+  }
+
+  .contact-form-3{
+    color: #f3f3f3;
   }

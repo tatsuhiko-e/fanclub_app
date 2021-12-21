@@ -79,12 +79,13 @@ ActiveRecord::Schema.define(version: 2021_10_29_092210) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "phone_number", null: false
+    t.string "name"
     t.text "message", null: false
+    t.string "to_email", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2021_10_29_092210) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -142,7 +144,6 @@ ActiveRecord::Schema.define(version: 2021_10_29_092210) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.integer "area"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(version: 2021_10_29_092210) do
     t.integer "gender"
     t.text "profile"
     t.integer "theme", default: 0, null: false
+    t.boolean "hide_name", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

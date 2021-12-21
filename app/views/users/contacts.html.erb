@@ -4,7 +4,7 @@
     <li>
       <%= link_to "プロフィール", @user, class: "" %>
     </li>
-    <li class="current">
+    <li>
       <%= link_to "ブログ", posts_user_path(@user), class: "" %>
     </li>
     <li>
@@ -13,24 +13,26 @@
     <li>
       <%= link_to "動画", videos_user_path(@user), class: "" %>
     </li> 
-    <li>
-      <%= link_to "コンタクト", "/", class: "" %>
+    <li class="current">
+      <%= link_to "コンタクト", contacts_user_path(@user), class: "" %>
     </li> 
   </ul>
 
-  <%= form_for(@contact, url: confirm_path) do |f| %>
-    <div class="form-group">
-      <%= f.label :name, 'お名前*' %>
-      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  <%= form_for(@contact, url: contacts_confirm_path) do |f| %>
+    <div class="form-group text-center mt-5">
+      <%= f.label :name, 'お名前', class: "contactform-label contact-form-#{@user.theme} " %>
+      <%= f.text_field :name, class: "form-control", id: "exampleInputEmail1", style: "width: 300px;" %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :message, 'メッセージ*' %>
-      <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+    <div class="form-group text-center mt-5">
+      <%= f.label :message, 'メッセージ', class: "contactform-label contact-form-#{@user.theme}" %>
+      <%= f.text_area :message, class: "form-control contact-form", id: "exampleInputEmail1", style: "width: 600px;" %>
     </div>
 
-    <div>
-      <%= f.submit '入力内容確認' %>
+    <%= f.hidden_field :to_email %>
+
+    <div class="form-group text-center field mt-5 ">
+      <%= f.submit '入力内容確認', class: "btn btn-large btn-primary" %>
     </div>
   <% end %>
 </div>

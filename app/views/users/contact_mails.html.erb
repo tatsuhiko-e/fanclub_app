@@ -1,0 +1,10 @@
+<div class="contac-index-title text-center mt-4">コンタクト一覧</div>
+
+<% @contact_mails.each do |mail| %>
+  <div class="contact-mails">
+    <ul calss="mail-ul">
+      <li calss="contact-item"><%= mail.created_at.strftime('%Y/%m/%d') %></li>
+      <li calss="contact-item"><%= link_to mail.name, contact_path(mail) %></li>
+    </ul>
+  </div>
+<% end %>

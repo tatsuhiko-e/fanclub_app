@@ -2,12 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.admin-container{
+  padding-top: 100px; 
+  padding-bottom: 20px;
+}
+
+
 .name-font{
     font-size: 50px;
     font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
 }
 
+.event-container{
+  background-color: #fff;
+}
+
  .follow_button{
+   text-align: right;
    position: relative;
    bottom: 80px;
    right: 30px;
@@ -17,9 +28,10 @@
    color: rgb(240, 202, 35);
  }
 
- 
+
 .user-show-container1{
   background-color: #f8e8ff;
+  padding-bottom: 50px;
 }
 
 .table-ul1 {
@@ -32,6 +44,7 @@
       top: 1px;
       bottom: 0px;
     }
+    padding-left: 0px;
   }
 
   .table-ul1 li {
@@ -64,9 +77,31 @@
     background-color: #b94deb;
   }
 
+  .user-show-heading-1{
+    font-size: 55px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 1120px;
+    border-bottom: solid;
+    border-color: #dfb0ff;;
+  }
 
 // profile
-  
+
+  .hide-name-form{
+    display: inline-block;
+  }
+
+  .form-check-label{
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .hide-name-explanation{
+    font-size: 15px;
+  }
+
 
   .user-name-1{
     font-size: 90px;
@@ -86,50 +121,59 @@
 
 // メンバー一覧
 
-.font7{
-  font-size: 55px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  width: 1120px;
-  border-bottom: solid;
-  border-color: #ffb0fb;;
-}
 
 .member {
 	display: flex;
   flex-wrap: wrap;
-  margin: 25px;
+  margin: 5px;
 }
 
 
-.card1 {
+.member-card {
+  position: relative;
   display: inline-block;
-  margin: 25px auto;
-  width: 250px;
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
-  box-shadow: 0 2px 5px #ccc;
+  margin: 20px auto;
+  width: 200px;
 }
-.card-img1 {
-  border-radius: 5px 5px 0 0;
+
+.member-image {
+  border-radius: 5px 5px 5px 5px;
   max-width: 100%;
   height: auto;
 }
+
 .card-content1 {
-  padding: 10px;
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 320px;
+  background:rgba(32, 32, 32, 0.65)
 }
+
 .card-title1 {
-  font-size: 20px;
-  margin-bottom: 5px;
-  text-align: left;
-  color: #333;
+  font-size: 30px;
+  position: relative;
+  top: 20px;
+  text-align: center;
+  color: #fff;
 }
+
+//nearposts
+
+.user-nearpost{
+  margin: 5px;
+  background-color: #ffeef7;
+}
+
+
+
 .card-text1 {
   color: #777;
   font-size: 14px;
   line-height: 1.5;
 }
+
 .card-link1 {
   text-align: center;
   border-top: 1px solid #eee;
@@ -174,39 +218,45 @@
     margin: 25px;
   }
 
-  $men: 0;
-  $women: 1;
 
-  .card3{
-    position: relative;
-    display: inline-block;
+
+  .member1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    margin-right: auto;
   }
 
-  .card-img3{
+  .card5{
+    position: relative;
+    display: inline-block;
+    margin: 25px;
+  }
+
+  .eventcard{
+    position: relative;
+    display: inline-block;
+    margin: 5px;
   }
 
   .card-content3 {
     width: 100%;
-    height: 120px;
+    height: 100px;
     position: absolute;
-    top: 280px;
-    background:rgba(32, 32, 32, 0.55)
+    top: 237px;
+    background:rgba(32, 32, 32, 0.65)
   }
 
   .card-name3{
     position: relative;
-    top: -20px;
+    top: 0px;
     color: #fff;
-    font-size: 60px;
+    font-size: 40px;
   }
 
-  .user-woman{
-    background-color: #fff;
-  }
- 
   .card-content3 {
     position: absolute;
-
+    top: 237px;
   }
 
   .card-title3 {
@@ -216,40 +266,51 @@
     text-align: left;
     color: #333;
   }
-  .card-text3 {
+
+  .eventcard-title {
     color: #777;
     font-size: 14px;
     line-height: 1.5;
   }
+
   .card-link3 {
     text-align: center;
     border-top: 1px solid #eee;
     padding: 20px 10px;
   }
+
   .card-link3 a {
     text-decoration: none;
     color: #0bd;
     margin: 0 10px;
   }
+
   .card-link3 a:hover {
     color: #0090aa;
   }
 
   .card-list3{
+    width: 100%;
     display: flex;
+    list-style: none;
+    justify-content: space-between;
   }
 
-  .card-text3{
-    list-style: none;
-    width: 470px;
-    font-size: 20px;
+  .eventcard-title{
+    color: #fff;
+    font-size: 30px;
+    position: relative;
+    top: -5px;
+    margin-left: 0px;
   }
 
   .card-count3{
-    list-style: none;
-    width: 80px;
+    color: #fff;
+    text-align: right;
     font-size: 30px;
+    margin-right: 10px;  
   }
+  
 
   .font8-1{
     font-size: 40px;
@@ -297,6 +358,7 @@
 
   .all_look{
     font-size: 30px;
+    text-align: right;
     margin-right: 90px;
   }
 
