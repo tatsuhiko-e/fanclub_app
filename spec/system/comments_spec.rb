@@ -58,7 +58,7 @@ RSpec.describe 'コメント投稿、削除機能', type: :system do
         click_button 'コメントする'
       end
       it '投稿成功(a)' do
-        expect(page).to have_content 'コメント'
+        expect(page).to have_content 'コメント1'
         expect(page).to have_content 'コメントを削除する'
       end
     end
@@ -137,7 +137,6 @@ RSpec.describe 'コメント投稿、削除機能', type: :system do
       before do
         sign_in_as(login_user)
         visit post_path(1)
-        
         fill_in 'comment[content]', with: 'コメント'
         execute_script('window.scrollBy(0,10000)')
         click_button 'commit'

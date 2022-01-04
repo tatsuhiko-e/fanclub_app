@@ -5,7 +5,7 @@ module OmniauthMocks
       "uid" => "123456",
       "info" => {
         "name" => "Mock User",
-        "image" => "",
+        "image" => "https://www.pakutaso.com/shared/img/thumb/mynoPAR57726_TP_V.jpg",
         "location" => "",
         "email" => "mock@example.com",
         "urls" => {

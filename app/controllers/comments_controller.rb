@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :ensure_correct_user, only: [:destroy]
 
   def create
-    @user = User.find_by(id: params[:user_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = params[:post_id]
@@ -20,7 +19,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_back(fallback_location: root_path)
   end
-  
+
   private
 
   def comment_params

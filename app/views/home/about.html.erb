@@ -37,7 +37,7 @@
 
 
 <div class="text-center mt-3">
-  <h1 class="font2">（タイトル）へようこそ</h1>
+  <h1 class="font2">アイメモへようこそ</h1>
 </div>
 
 <div class="text-center mb-3">
@@ -79,20 +79,28 @@
 <h2 class="font4 ">近くのアイドル</h2>
   <div class="near-fanclub-container">
     <div class="member1">
-      <% @area_user.last(6).each do |user| %>
-        <section class="eventcard">
-          <%= link_to user_path(user), class: " text-dark" do %>
-            <div class="eventcard-img"><%= image_tag(user.image.variant(gravity: :center, resize:"540x337^", crop:"540x337+0+0").processed, class: "img-fluid") %>
-              <div class="card-content3">
-                <div class="card-name3"><%= user.name.truncate(13) %></div>
-                <ul class="card-list3">
-                  <li class="eventcard-title"><%= user.area %></li>
-                  <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
-                </ul>
+      <% if user_signed_in? || @user.area.nil %>
+        <div class="near-fanclub-text">
+          <p class="text-center">お住まいの地域を登録して</p>
+          <p class="text-center">近くで活動しているアイドルを見つけよう</p>
+          <%= link_to 'プロフィール編集ページへ', edit_user_path(current_user), class:"text-center"  %>
+        </div>
+      <% else %>
+        <% @area_user.last(6).each do |user| %>
+          <section class="eventcard">
+            <%= link_to user_path(user), class: " text-dark" do %>
+              <div class="eventcard-img"><%= image_tag(user.image.variant(gravity: :center, resize:"540x337^", crop:"540x337+0+0").processed, class: "img-fluid") %>
+                <div class="card-content3">
+                  <div class="card-name3"><%= user.name.truncate(13) %></div>
+                  <ul class="card-list3">
+                    <li class="eventcard-title"><%= user.area %></li>
+                    <li class="card-count3 text-right"><%= "♡#{user.followers.count}" %></li>
+                  </ul>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </section>
+            <% end %>
+          </section>
+        <% end %>
       <% end %>
     </div>
   </div>

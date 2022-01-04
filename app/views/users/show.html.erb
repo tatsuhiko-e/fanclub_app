@@ -30,7 +30,7 @@
     <h2 class='user-show-heading-<%= @user.theme %>'>メンバー</h2>
 
     <% if user_signed_in? && @user.id == current_user.id %>
-      <div class="text-center"><%= button_to "メンバーを追加する", new_member_path(@user) ,class: "btn btn-large btn-primary" %></div>
+      <div class="text-center"><%= link_to "メンバーを追加する", new_member_path(@user) %></div>
     <% end %>
     <div class="member">
       <% @user.members.each do |member| %>

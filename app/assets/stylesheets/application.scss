@@ -22,19 +22,20 @@
   font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
 }
 
-body {
-    min-width: 1200px;
-    text-decoration: none;
-}
-
 html{
   text-decoration: none;
 }
 
+body {
+  min-width: 1200px;
+  text-decoration: none;
+}
+
+
+
 nav{
   padding: 0px;
   margin: 0px;
-  overflow: hidden;
 }
 
 .nav-btn{
@@ -67,9 +68,9 @@ nav{
 
 .container{
   background-color: #fcfaff;
-  overflow: hidden;
   padding: 0px;
   width: 1200px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -152,6 +153,67 @@ nav{
 
 /*ここまでnavbar*/
 
+#footer {
+  position: relative;
+  margin-top: 40px;
+  color: #fff;
+}
+#footer p {
+  margin: o;
+}
+#footer a {
+  text-decoration: none;
+  color: #fff;
+}
+#footer a:hover {
+  text-decoration: underline;
+}
+#footer .primary {
+  padding: 40px 20px;
+  background: #741c9c;
+}
+#footer .secondary {
+  display: flex;
+  padding: 40px 20px;
+  background: #222;
+}
+
+
+/* footer-logo */
+
+#footer .logo {
+  text-align: center;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 26px;
+  font-weight: bold;
+}
+/* navi */
+
+.navi-row {
+  margin-top: 40px;
+}
+#footer .navi {
+
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+#footer .navi li {
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
 .container{
   width: 100%;
   max-width: 1200px;
@@ -200,3 +262,4 @@ nav{
 ul{
   list-style: none;
 }
+

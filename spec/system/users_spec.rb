@@ -197,8 +197,8 @@ RSpec.describe '', type: :system do
       sign_in_as(login_user)
       visit edit_user_path(user_a)
     end
-    it "マイページにリダイレクトされる" do
-      expect(page).to have_content '江口b'
+    it "rootページにリダイレクトされる" do
+      expect(page).to have_content 'アイメモへようこそ'
     end
   end
 

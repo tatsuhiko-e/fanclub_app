@@ -11,16 +11,16 @@
   <%= link_to 'このメッセージを編集する', edit_post_path(@post),id: "post_edit" %>
 <% end %>
 
-<div class='block text-center mt-5'>
-  <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-    <ul class="form-group text-center field comment-form-ul">
-      <li><%= f.text_field :content, class: "form-control1 comment-form", id: "exampleInputEmail1" %></li>
-      <li><%= f.submit 'コメントする', class: "btn btn-large btn-primary" %></li>
-    </ul>
-  <% end %>
-  <% @post.comments.each do |comment| %>
-    <p>
-      <%= comment.user.name %> : <%= comment.content %>
+  <div class='block text-center mt-5'>
+    <%= form_with(model:[@post, @comment], method: :post, local: true) do |f| %>
+      <ul class="form-group text-center field comment-form-ul">
+        <li><%= f.text_field :content, class: "form-control1 comment-form", id: "exampleInputEmail1" %></li>
+        <li><%= f.submit 'コメントする', class: "btn btn-large btn-primary" %></li>
+      </ul>
+    <% end %>
+    <% @post.comments.each do |comment| %>
+      <p><%= comment.user.name %> :
+      <%= comment.content %>
       <% if comment.user.id == current_user.id %>
         <%= link_to 'コメントを削除する', post_comment_path(@post, comment.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
       <% end %>
@@ -28,5 +28,3 @@
     <hr>
   <% end %>
 </div>
-
-

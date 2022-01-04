@@ -13,7 +13,7 @@ RSpec.describe 'member投稿・編集・削除機能', type: :system do
         visit user_path(login_user)
       end
 
-      it '投稿ボタンとイベント一覧が表示される' do      
+      it '投稿ボタンとメンバー一覧が表示される' do
         expect(page).to have_content 'メンバーを追加する'
         expect(page).to have_content 'メンバー'
       end
