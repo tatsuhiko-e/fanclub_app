@@ -2,9 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.col3 li{
+	margin-bottom: 50px;
+}
+
+.col3 img{
+	max-width: 288px;
+	display: block;
+	margin: -5px auto 20px;
+}
+
 
 .onimg {
-  width: 500px;        /* 画像の横幅（自由に指定） */
+  width: 500px;        /* 画像の横幅 */
   position: relative;  /* 帯の表示位置の基準とする */
 }
 

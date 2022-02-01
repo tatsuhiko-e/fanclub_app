@@ -1,10 +1,10 @@
-<nav class="navbar <%= " navbar-#{@user.theme}" if !@user.nil? %> navbar-dark  border-bottom border-3 border-white" style="<%= 'background-color: #741c9c;' if @user.nil? || @user.theme == 1 || @user.theme == 0 %>">
-  <div class="navbar-brand"><%= link_to "アイメモ", root_path, class: "nav-title" %></div>
-
-  <!-- メニュー項目 -->
-    <ul class="nav-ul">
+<nav class="home-nav">
+  <div class="home-nav-primary">
+    <div class="navbar-brand"><%= link_to "アイメモ", root_path, class: "nav-title no-underline" %></div>
+    <!-- メニュー項目 -->
+    <ul class="home-nav-ul">
       <% if user_signed_in? %>
-        <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light logout-btn" %></li>
+        <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "" %></li>
         <li id="sbtn7" class="nav-item">
           <%= link_to contact_mails_user_path(current_user.id) do %>
             <i class="far fa-envelope fa-3x"></i>
@@ -16,8 +16,10 @@
           <% end %>
         </li>
       <% else %>
-        <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'btn btn-light mr-2 sginup-btn nav-btn' %></li>
-        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-light mx-4 nav-btn' %></li>
+        <li class="nav-item"><%= link_to 'アイメモとは？', new_user_registration_path, class: 'no-underline', style: "color: #000;" %></li>
+        <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'no-underline' %></li>
+        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'no-underline' %></li>
       <% end %>
     </ul>
+  </div>
 </nav>

@@ -18,248 +18,66 @@
  */
 
 
+
  html, body {
-  font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  font-family: HanziPen SC;
+  min-width: 1200px;
+  height: 100%;
 }
 
 html{
   text-decoration: none;
 }
 
-body {
-  min-width: 1200px;
-  text-decoration: none;
-}
-
-
-
-nav{
-  padding: 0px;
-  margin: 0px;
-}
-
-.nav-btn{
-  font-size: 30px;
-}
-
-.nav-ul{
-  display: flex;
-  position: relative;
-  top: 10px;
-  right: 40px;
-}
-
-.nav-title{
-  color: #e9fffe;
-  font-size: 40px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-left: 20px;
-}
-
-.logout-btn{
-  position: relative;
-  left: 20px;
-}
-
-.pagination {
-  justify-content: center;
-}
-
-.container{
-  background-color: #fcfaff;
-  padding: 0px;
-  width: 1200px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#sbox2{
-  height:38px;
-  width: 300px;
-  padding:0 10px;
-  border-radius:2px;
-  outline:0;
-  background:rgb(255, 255, 255);	
-}
-
-#sbtn2{
-  height:50px;
-  position:relative; 
-  left:-45px;/*アイコン左右の位置調整*/
-  top:-5px;
-  background:none;
-  color: #741c9c;
-  border:none;
-  font-size:20px;/*アイコンサイズ*/
-}
-#sbtn5:hover{
-  color:#f1f1f1;
-}
-
-#sbtn3{
-  color: #ffffff;
-  height:50px;
-  position:relative;
-  left:0px;/*アイコン左右の位置調整*/
-  top:-8px;
-  background:none;
-  border:none;
-  font-size:20px;/*アイコンサイズ*/
-}
-
-.fa-envelope{
-  color: #f1f1f1;
-}
-
-.fa-bell{
-  color: #f1f1f1;
-}
-
-.fa-user-circle{
-  color: #f1f1f1;
-}
-
-#sbtn6{
-  position:relative; 
-  left:-53px;/*アイコン左右の位置調整*/
-  top:-5px;
-  background:none;
-  color: #ffffff;
-  border:none;
-  font-size:17px;/*アイコンサイズ*/
-}
-
-#sbtn7{
-  position:relative; 
-  left:-25px;/*アイコン左右の位置調整*/
-  top:-5px;
-  background:none;
-  color: #ffffff;
-  border:none;
-  font-size:17px;/*アイコンサイズ*/
-}
-
-.sub-menu1 {
-  position: absolute;
-  width: -50px;
-  background: #0bd;
-  top: 30px;
-  opacity: 0;
-
-  transition: .5s;
-}
-
-/*ここまでnavbar*/
-
-#footer {
-  position: relative;
-  margin-top: 40px;
-  color: #fff;
-}
-#footer p {
-  margin: o;
-}
-#footer a {
-  text-decoration: none;
-  color: #fff;
-}
-#footer a:hover {
-  text-decoration: underline;
-}
-#footer .primary {
-  padding: 40px 20px;
-  background: #741c9c;
-}
-#footer .secondary {
-  display: flex;
-  padding: 40px 20px;
-  background: #222;
-}
-
-
-/* footer-logo */
-
-#footer .logo {
-  text-align: center;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  font-size: 26px;
-  font-weight: bold;
-}
-/* navi */
-
-.navi-row {
-  margin-top: 40px;
-}
-#footer .navi {
-
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-#footer .navi li {
-  margin: 0 20px 0 0;
-  padding: 0;
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-
-.container{
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-
-}
-
-.swiper-container {
-  width: 100%;
-}
-
-/* symple_calendar */
-.year1 {
-  font-size: 40px;
-}
-
-.month1 {
-  font-size: 60px;
-}
-
-//smple calendar
-.calendar-year{
-  font-size: 30px;
-  margin-right: 20px;
-  position: relative;
-  bottom: 10px;
-}
-
-.alert{
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.alert-model {
-  color:#262626; 
-  background:#FFEBE8;
-  text-align: center;
-  border:2px solid #990000;
-  padding:12px; font-weight:850;
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
+.no-underline{text-decoration:none !important;}
 
 ul{
   list-style: none;
 }
+
+.container {
+  min-width: 1200px;
+  margin: 0;
+  padding: 0;
+}
+
+.home-nav{
+  width: 100%;
+  height: 100px;
+  background-color: rgb(246, 239, 255);
+}
+
+.home-nav-primary{
+  align-items: center;
+  display: table;
+  height: 94px;
+  margin: auto;
+  max-width: 950px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.navbar-brand{
+  font-family: HanziPen SC;
+  font-size: 40px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.home-nav-ul{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.nav-item{
+  display: inline-block;
+  font-size: 30px;
+  margin-right: 30px;
+}
+
+.nav-item:first-child{
+  margin-left: 160px;
+}
+
+
 
