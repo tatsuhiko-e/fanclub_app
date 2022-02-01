@@ -74,7 +74,7 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   config.delivery_method = :smtp
-  cinfig.smtp_settings = {
+  config.smtp_settings = {
     :address => "smtp.gmail.com", 
     :domain => "gmail.com",
     :port => 587,
